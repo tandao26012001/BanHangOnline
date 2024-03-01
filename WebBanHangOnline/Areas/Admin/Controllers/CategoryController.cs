@@ -19,14 +19,14 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             return View(items);
         }
 
-        public ActionResult Add()
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add(Category model)
+        public ActionResult Create(Category model)
         {
             if (ModelState.IsValid)
             {

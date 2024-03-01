@@ -77,7 +77,7 @@
             <!-- /footer content -->
         </div>
     </div>
-
+    @RenderSection("scripts", required: false)
     <!-- jQuery -->
     <script src="~/Areas/Admin/Assets/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -118,7 +118,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="~/Areas/Admin/Assets/build/js/custom.min.js"></script>
-    @RenderSection("scripts", required: false)
 </body>
 </html>
 

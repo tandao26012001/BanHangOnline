@@ -7108,7 +7108,6 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartiaSideBar.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <Content Include="Areas\Admin\Views\News\Add.cshtml" />
@@ -7202,7 +7201,6 @@
     <Content Include="Content\assets\plugins\moment\locales.min.js.map" />
     <Content Include="Content\assets\plugins\moment\moment-with-locales.min.js.map" />
     <Content Include="Content\assets\plugins\moment\moment.min.js.map" />
-    <Content Include="Areas\Admin\Views\Shared\_TopNavigation.cshtml" />
     <Content Include="Areas\Admin\Assets\docs\fonts\fonts\fontawesome-webfont.eot" />
     <Content Include="Areas\Admin\Assets\docs\fonts\fonts\fontawesome-webfont.ttf" />
     <Content Include="Areas\Admin\Assets\docs\fonts\fonts\fontawesome-webfont.woff" />
@@ -8286,6 +8284,8 @@
     <Content Include="Areas\Admin\Assets\vendors\validator\.gitignore" />
     <Content Include="Areas\Admin\Assets\vendors\validator\package.json" />
     <Content Include="Areas\Admin\Assets\vendors\validator\README.md" />
+    <Content Include="Areas\Admin\Views\Shared\_TopNavigation.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

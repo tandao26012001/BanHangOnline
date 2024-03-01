@@ -1,6 +1,7 @@
 ﻿@model WebBanHangOnline.Models.EF.Category
+
 @{
-    ViewBag.Title = "Cập nhật danh mục";
+    ViewBag.Title = "Thêm mới danh mục";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,10 +19,10 @@
             <div class="col-md-12 col-sm-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Form Edit<small></small></h2>
+                        <h2>Form Add New<small></small></h2>
                         <div class="clearfix"></div>
                     </div>
-                    @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { }))
+                    @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
@@ -32,9 +33,7 @@
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Title <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        @*<input class="form-control" name="Title" data-validate-length-range="5,250" type="text" required="required" />*@
-                                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tên danh mục", @required = "required", @type="text" })
-
+                                        <input class="form-control" name="Title" data-validate-length-range="5,250" type="text" required="required" />
                                     </div>
                                 </div>
                                 <div class="field item form-group">
@@ -102,11 +101,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="~/Areas/Admin/Assets/vendors/validator/multifield.js"></script>
     <script src="~/Areas/Admin/Assets/vendors/validator/validator.js"></script>
-    <script src="~/Scripts/jsConvert.js"></script>
 
     <!-- Javascript functions	-->
     <script>
-        // initialize a validator instance from the "FormValidator" constructor.
+    // initialize a validator instance from the "FormValidator" constructor.
         // A "<form>" element is optionally passed as an argument, but is not a must
         var validator = new FormValidator({
             "events": ['blur', 'input', 'change']
@@ -131,3 +129,4 @@
     </script>
 
 }
+

@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<WebBanHangOnline.Models.ApplicationUser>
 @{
     ViewBag.Title = "Quản lý tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<!-- page content -->
 <div class="right_col" role="main">
     <div class="">
         <div class="clearfix"></div>
@@ -11,6 +13,11 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Account <small>Danh sách tài khoản</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a href="/Admin/Account/Create" class="add"><i class="fa fa-plus-square"></i></a>
+                            </li>
+                        </ul>
                         <div class="clearfix"></div>
                     </div>
 
@@ -27,9 +34,6 @@
                                         <th class="column-title">Full name </th>
                                         <th class="column-title">Phone number</th>
                                         <th class="column-title">Email </th>
-                                        <th class="column-title no-link last">
-                                            <span class="nobr">Tools</span>
-                                        </th>
                                         <th class="bulk-actions" colspan="6">
                                             <a class="antoo" style="color:#fff; font-weight:500;">Select ( <span class="action-cnt"> </span> )</a>
                                         </th>
@@ -51,13 +55,19 @@
                                                 <td class=" ">@item.FullName</td>
                                                 <td class=" ">@item.Phone</td>
                                                 <td class=" ">@item.Email</td>
-                                                <td class=" last">
-                                                    <a href="/admin/account/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
-                                                    <a href="#" data-user="@item.Id"><i class="fa fa-trash-o"></i>Delete </a>
-                                                </td>
+                                                @*<td class=" last">
+                                                        <a href="/admin/account/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
+                                                        <a href="#" data-user="@item.Id"><i class="fa fa-trash-o"></i>Delete </a>
+                                                    </td>*@
                                             </tr>
                                             i++;
                                         }
+                                    }
+                                    else
+                                    {
+                                        <tr class="odd pointer">
+                                            <td colspan="6">Chả có cái account nào hết !!!</td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
