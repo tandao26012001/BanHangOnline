@@ -37,53 +37,60 @@
 
                                     </div>
                                 </div>
-                                <div class="field item form-group">
+                                @*<div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Alias <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" @*data-validate-length-range="6" data-validate-words="2"*@ name="Alias" required="required" />
+                                        @Html.TextBoxFor(x => x.Alias, new { @class = "form-control", @required = "required" })
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="Alias" required="required" />
                                     </div>
-                                </div>
+                                </div>*@
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Description <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="Description" required="required" type="text" />
+                                        @*<input class="form-control" name="Description" required="required" type="text" />*@
+                                        @Html.TextBoxFor(x => x.Description, new { @class = "form-control", @required = "required", @type = "text" })
+
                                     </div>
                                 </div>
-                                <div class="field item form-group">
+                                <!--<div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Link <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" type="text" name="Link" data-validate-minmax="1,100" required='required'>
-                                    </div>
-                                </div>
+                                        @Html.TextBoxFor(x => x.Link, new { @class = "form-control", @required = "required" })-->
+                                        @*<input class="form-control" type="text" name="Link" data-validate-minmax="1,100" required='required'>*@
+                                    <!--</div>
+                                </div>-->
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Position<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" type="number" name="Position" @*data-validate-linked='password'*@ required='required' value="1" />
+                                        @Html.TextBoxFor(x => x.Position, new { @class = "form-control", @required = "required" })
+                                        <!--<input class="form-control" type="number" name="Position"--> @*data-validate-linked='password'*@ <!--required='required' value="1" />-->
                                     </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Seo Title <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" type="text" name="SeoTitle" @*data-validate-linked='password'*@ required='required' />
+                                        @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", @required = "required" })
+                                        <!--<input class="form-control" type="text" name="SeoTitle"--> @*data-validate-linked='password'*@ <!--required='required' />-->
                                     </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Seo Description <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" type="text" name="SeoDescription" @*data-validate-linked='password'*@ required='required' />
+                                        @Html.TextBoxFor(x => x.SeoDescription, new { @class = "form-control", @required = "required" })
+                                        <!--<input class="form-control" type="text" name="SeoDescription"--> @*data-validate-linked='password'*@ <!--required='required' />-->
                                     </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Seo Keywords <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" type="text" name="SeoKeywords" @*data-validate-linked='password'*@ required='required' />
+                                        @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", @required = "required" })
+                                        <!--<input class="form-control" type="text" name="SeoKeywords"--> @*data-validate-linked='password'*@ <!--required='required' />-->
                                     </div>
                                 </div>
                                 <div class="ln_solid">
                                     <div class="form-group">
                                         <div class="col-md-6 offset-md-3">
-                                            <button type='submit' class="btn btn-primary">Submit</button>
-                                            <button type='reset' class="btn btn-success">Reset</button>
+                                            <button type='submit' class="btn btn-primary">Update</button>
                                             <a class="btn btn-danger" type="button" href="/admin/category">Back</a>
                                         </div>
                                     </div>
