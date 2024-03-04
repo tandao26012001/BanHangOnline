@@ -38,6 +38,9 @@
                             <li>
                                 <a href="/Admin/news/Create" class="add"><i class="fa fa-plus-square"></i> Add </a>
                             </li>
+                            <li>
+                                <a href="#" id="btnDeleteAll"><i class="fa fa-trash-o"></i> Delete All </a>
+                            </li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -71,12 +74,12 @@
                                             var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
                                             <tr class="odd pointer" id="trow_@item.Id">
                                                 <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records" @*class="cbkItem"*@ value="@item.Id">
+                                                    <input type="checkbox" class="flat" name="table_records" value="@item.Id">
                                                 </td>
                                                 <td class=" ">@i</td>
                                                 <td><img src="@item.Image" width="90" /></td>
                                                 <td class=" ">@item.Title</td>
-                                                <td class="">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                                <td class=" ">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                                 <td class="text-center">
                                                     <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
                                                 </td>
@@ -91,7 +94,7 @@
                                     else
                                     {
                                         <tr class="odd pointer">
-                                            <td colspan="6">Chả có cái account nào hết !!!</td>
+                                            <td colspan="6">Thông tin trống !!!</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -115,10 +118,11 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $('body').on('click', '#BtnDeleteAll', function (e) {
+            $('body').on('click', '#btnDeleteAll', function (e) {
                 e.preventDefault();
                 var str = "";
-                var checkbox = $(this).parents('.card').find('tr td input:checkbox');
+                debugger;
+                var checkbox = $(this).parents('.x_panel').find('tr td input:checkbox');
                 var i = 0;
                 checkbox.each(function () {
                     if (this.checked) {
@@ -150,18 +154,18 @@
                 }
             });
 
-            $('body').on('change', '#SelectAll', function () {
-                var checkStatus = this.checked;
-                var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
-                checkbox.each(function () {
-                    this.checked = checkStatus;
-                    if (this.checked) {
-                        checkbox.attr('selected', 'checked');
-                    } else {
-                        checkbox.attr('selected', '');
-                    }
-                });
-            });
+            //$('body').on('change', '#check-all', function () {
+            //    var checkStatus = this.checked;
+            //    var checkbox = $(this).parents('.x_title').find('tr td input:checkbox');
+            //    checkbox.each(function () {
+            //        this.checked = checkStatus;
+            //        if (this.checked) {
+            //            checkbox.attr('selected', 'checked');
+            //        } else {
+            //            checkbox.attr('selected', '');
+            //        }
+            //    });
+            //});
             $('body').on('click', '.btnDelete', function () {
                 var id = $(this).data("id");
                 var conf = confirm('Bạn có muốn xóa bản ghi này không?');
@@ -194,7 +198,7 @@
                                 //$(this).find("i").removeClass("fas fa-times text-danger")
                                 //$(this).find("i").addClass("fa fa-check text-success");
                             } else {
-                                btn.html("<i class='fas fa-times text-danger'></i>");
+                                btn.html("<i class='fa fa-close'></i>");
                             }
                         }
 

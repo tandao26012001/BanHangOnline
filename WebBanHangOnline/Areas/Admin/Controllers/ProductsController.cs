@@ -29,7 +29,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             return View(items);
         }
 
-        public ActionResult Add()
+        public ActionResult Create()
         {
             ViewBag.ProductCategory = new SelectList(db.ProductCategories.ToList(), "Id", "Title");
             return View();
@@ -37,7 +37,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add(Product model, List<string> Images, List<int> rDefault)
+        public ActionResult Create(Product model, List<string> Images, List<int> rDefault)
         {
             if (ModelState.IsValid)
             {

@@ -45,11 +45,11 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 model.CreatedDate = DateTime.Now;
-                model.CategoryId = 3;
                 model.ModifiedDate = DateTime.Now;
-                model.Alias = WebBanHangOnline.Models.Common.Filter.FilterChar(model.Title);
-                db.News.Attach(model);
-                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                model.CategoryId = 6;
+                model.Alias = Models.Common.Filter.FilterChar(model.Title);
+                db.News.Add(model);
+                //db.Entry(model).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
