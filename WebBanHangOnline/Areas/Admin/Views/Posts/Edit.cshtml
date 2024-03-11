@@ -4,55 +4,23 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
-@section naviheader{
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">Trang chủ</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/posts" class="nav-link"> Bài viết</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Cập nhật</a>
-        </li>
-    </ul>
-}
-
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Thêm mới Bài viết</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Bài viết</a></li>
-                    <li class="breadcrumb-item active">Cập nhật</li>
-                </ol>
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Form News</h3>
             </div>
         </div>
-    </div><!-- /.container-fluid -->
-</section>
+        <div class="clearfix"></div>
 
-<!-- Main content -->
-<section class="content">
-
-    <!-- Default box -->
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Thông tin Cập nhật</h3>
-        </div>
-        <div class="card-body">
-            @if (Model != null)
-            {
-                <div class="bs-stepper-content">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Form Add New<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
                     @using (Html.BeginForm("Edit", "Posts", FormMethod.Post, new { }))
                     {
                         @Html.AntiForgeryToken()
@@ -60,71 +28,80 @@
                         @Html.HiddenFor(x => x.Id)
                         @Html.HiddenFor(x => x.CategoryId)
                         @Html.HiddenFor(x => x.CreatedDate)
-                        <!-- your steps content here -->
-                        <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tiêu đề</label>
-                                @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
-                                @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">Ảnh đại diện</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
+                        <div class="x_content">
+                            <form class="" action="" method="post" novalidate>
+                                <div class="clearfix"></div>
+                                <span class="section">@ViewBag.title</span>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Title <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @required = "required" })
+
                                     </div>
-                                    <div class="input-group-append">
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Image <span class="required">*</span></label>
+                                    <div class="col-md-5 col-sm-6">
+                                        @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control", @required = "required", @readonly = "readonly" })
+                                    </div>
+                                    <div class="nav navbar-right panel_toolbox">
                                         <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Mô tả</label>
-                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Chi tiết</label>
-                                @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Hiển thị</label>
-                                @Html.CheckBoxFor(x => x.IsActive)
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Seo title</label>
-                                @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">SeoDescription</label>
-                                @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">SeoKeywords</label>
-                                @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Lưu</button>
-                                <a href="/admin/posts" class="btn btn-danger">Quay lại</a>
-                            </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Description <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Detail <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">IsActive<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.CheckBoxFor(x => x.IsActive, new { @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Seo Title <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Seo Description <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Seo Keywords <span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="ln_solid">
+                                    <div class="form-group">
+                                        <div class="col-md-6 offset-md-3">
+                                            <button type='submit' class="btn btn-primary">Submit</button>
+                                            <button type='reset' class="btn btn-success">Reset</button>
+                                            <a class="btn btn-danger" type="button" href="/admin/news">Back</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-
                     }
-
                 </div>
-            }
-
+            </div>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-
-        </div>
-        <!-- /.card-footer-->
     </div>
-    <!-- /.card -->
-
-</section>
-<!-- /.content -->
+</div>
+<!-- /page content -->
 
 @section  scripts{
     <script>

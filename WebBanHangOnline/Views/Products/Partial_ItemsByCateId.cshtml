@@ -3,38 +3,42 @@
 {
     foreach (var item in Model)
     {
-        <!-- Product 1 -->
         var strImge = "";
         var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
         if (img != null)
         {
             strImge = img.Image;
         }
-        <div class="product-item @item.ProductCategory.Alias">
-            <div class="product discount product_filter">
-                <div class="product_image">
-                    <img src="@strImge" alt="@item.Title">
+        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="product-item" @item.ProductCategory.Alias>
+                <div class="position-relative bg-light overflow-hidden">
+                    <img class="img-fluid w-100" src="@strImge" alt="@item.Title">
+                    <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
                 </div>
-                <div class="favorite favorite_left"></div>
                 @if (item.PriceSale > 0)
                 {
                     <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
                 }
-                @* <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>*@
-                <div class="product_info">
-                    <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
+                <div class="text-center p-4">
+                    <a class="d-block h5 mb-2" href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a>
                     @if (item.PriceSale > 0)
                     {
-                        <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</span></div>
-
+                        <span class="text-primary me-1">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</span></span>
                     }
                     else
                     {
-                        <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</div>
+                        <span class="text-body text-decoration-line-through">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</span>
                     }
                 </div>
+                <div class="d-flex border-top">
+                    <small class="w-50 text-center border-end py-2">
+                        <a class="text-body" href="/chi-tiet/@item.Alias-p@(item.Id)"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                    </small>
+                    <small class="w-50 text-center py-2">
+                        <a class="text-body" href="#" data-id="@item.Id"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                    </small>
+                </div>
             </div>
-            <div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id">add to cart</a></div>
         </div>
     }
 }

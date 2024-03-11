@@ -2,34 +2,35 @@
 
 @if (Model != null && Model.Any())
 {
-    <div class="row">
-        <div class="col text-center">
-            <div class="section_title new_arrivals_title">
-                <h2>New Arrivals</h2>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-0 gx-5 align-items-end">
+                <div class="col-lg-6">
+                    <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                        <h1 class="display-5 mb-3">New Products</h1>
+                        <p>các sản phẩm mới nhất hiện tại đang có trong shop :v</p>
+                    </div>
+                </div>
+                @*<div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                    <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                        @foreach (var item in Model)
+                        {
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary border-2 active" data-bs-toggle="pill" href="@item.Alias">@item.Title</a>
+                            </li>
+                        }
+                    </ul>
+                </div>*@
             </div>
-        </div>
-    </div>
-    <div class="row align-items-center">
-        <div class="col text-center">
-            <div class="new_arrivals_sorting">
-                <ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-                    <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
-                    @foreach (var item in Model)
-                    {
-                        <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".@item.Alias">@item.Title</li>
-                    }
-
-                    @*<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">women's</li>
-                    <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessories</li>
-                    <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">men's</li>*@
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-                @Html.Action("Partial_ItemsByCateId", "Products")
+            <div class="tab-content">
+                <div class="tab-pane fade show p-0 active">
+                    <div class="row g-4">
+                        @Html.Action("Partial_ItemsByCateId", "Products")
+                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                            <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Products</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

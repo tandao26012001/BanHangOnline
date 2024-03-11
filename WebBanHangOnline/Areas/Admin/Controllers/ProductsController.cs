@@ -14,13 +14,17 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
     {
         private WebBanHangOnlineDbContext db = new WebBanHangOnlineDbContext();
         // GET: Admin/Products
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string Searchtext)
         {
-            IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id);
-            var pageSize = 10;
+            var pageSize = 5;
             if (page == null)
             {
                 page = 1;
+            }
+            IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id);
+            if (!string.IsNullOrEmpty(Searchtext))
+            {
+                items = items.Where(x => x.Alias.Contains(Searchtext) || x.Title.Contains(Searchtext));
             }
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
             items = items.ToPagedList(pageIndex, pageSize);
@@ -73,7 +77,9 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                     model.SeoTitle = model.Title;
                 }
                 if (string.IsNullOrEmpty(model.Alias))
-                    model.Alias = WebBanHangOnline.Models.Common.Filter.FilterChar(model.Title);
+                {
+                    model.Alias = Models.Common.Filter.FilterChar(model.Title);
+                }
                 db.Products.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");

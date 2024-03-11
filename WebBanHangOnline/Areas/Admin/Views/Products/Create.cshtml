@@ -1,0 +1,287 @@
+﻿@model WebBanHangOnline.Models.EF.Product
+@{
+    ViewBag.Title = "Thêm mới sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>General Elements</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="">
+            <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>@ViewBag.Title</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="x_content">
+                            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Image</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Seo</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="myTabContent">
+
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="col-md-12 ">
+                                        <div class="x_panel">
+                                            <div class="x_content">
+                                                <br>
+                                                <form class="form-label-left input_mask">
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">Title</label>
+                                                        <div class="col-md-10 col-sm-9 ">
+                                                            <input type="text" class="form-control" name="Title" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">ProductCode</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            <input type="text" class="form-control" placeholder="ProductCode" name="ProductCode" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">ProductCategory</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            @Html.DropDownListFor(x => x.ProductCategoryId, ViewBag.ProductCategory as SelectList, "-Chọn danh mục sản phẩm-", new { @class = "form-control", @placeholder = "Mã mã phẩm" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">Description</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            <input type="text" class="form-control" placeholder="Description" name="Description" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">Detail</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
+                                                            @*<input class="form-control" type="text" name="Detail" id="txtDetail">*@
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">Quantity</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            <input type="text" class="form-control" placeholder="Quantity" value="1" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">Price</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            <input type="text" class="form-control auto" id="demoPrice" name="demoPrice" value="0" data-a-dec="," data-a-sep="." >
+                                                            @Html.HiddenFor(x => x.Price, new { @class = "", @placeholder = "Price" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">PriceSale</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            <input type="text" class="form-control auto" id="demoPriceSale" name="demoPriceSale" value="0">
+                                                            @Html.HiddenFor(x => x.PriceSale, new { @class = "form-control", @placeholder = "PriceSale" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">OriginalPrice</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            <input type="text" class="form-control auto" id="demoOriginalPrice" name="demoOriginalPrice" value="0">
+                                                            @Html.HiddenFor(x => x.OriginalPrice, new { @class = "form-control", @placeholder = "OriginalPrice" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3" for="customcheckbox2">Active</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            @Html.CheckBoxFor(x => x.IsActive, new { @id = "customcheckbox2", @checked = "checked" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3" for="IsHotCheckbox2">Hot</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            @Html.CheckBoxFor(x => x.IsHot, new { @id = "IsHotCheckbox2" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3" for="IsFeatureCheckbox">Feature</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            @Html.CheckBoxFor(x => x.IsFeature, new { @id = "IsFeatureCheckbox" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3" for="IsSaleCheckbox">Sale</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            @Html.CheckBoxFor(x => x.IsSale, new { @id = "IsSaleCheckbox" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3" for="IsSaleCheckbox">Home</label>
+                                                        <div class="col-md-9 col-sm-9 ">
+                                                            @Html.CheckBoxFor(x => x.IsHome, new { @id = "IsHomeCheckbox" })
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-12 text-right">
+                                                <input type="button" class="btn btn-primary" id="iTaiAnh" onclick="BrowseServer();" value="Tải ảnh" />
+                                            </div>
+                                            <div class="col-md-12">
+                                                <table class="table table-hover" id="tbAnhSanPham">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center">#</th>
+                                                            <th class="text-center">Ảnh</th>
+                                                            <th class="text-center">Ảnh đại diện</th>
+                                                            <th class="text-center">Thao tác</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbHtml">
+                                                    </tbody>
+                                                </table>
+                                                <input type="hidden" id="tCurrentId" value="0" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                        <div class="item form-group">
+                                            <label class="col-form-label col-md-2 col-sm-3 label-align" for="seo-title">
+                                                SeoTitle <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 ">
+                                                <input type="text" id="seo-title" required="required" class="form-control " name="SeoTitle">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="col-form-label col-md-2 col-sm-3 label-align" for="seo-keywords">
+                                                SeoKeywords <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 ">
+                                                <input type="text" id="seo-keywords" required="required" class="form-control " name="SeoKeywords">
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="col-form-label col-md-2 col-sm-3 label-align" for="seo-description">
+                                                SeoDescription <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 ">
+                                                <input type="text" id="seo-description" required="required" class="form-control " name="SeoDescription">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group row">
+                                <div class="col-md-9 col-sm-9  offset-md-3">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <a type="button" class="btn btn-primary" href="/admin/products">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!-- /page content -->
+
+@section  scripts{
+    <script>
+        $(document).ready(function () {
+            $('.auto').autoNumeric('init');
+            $('#demoPrice').bind('blur focusout keypress keyup', function () {
+                var demoGet = $('#demoPrice').autoNumeric('get');
+                $('#Price').val(demoGet);
+                $('#Price').autoNumeric('set', demoGet);
+            });
+            $('#demoPriceSale').bind('blur focusout keypress keyup', function () {
+                var demoGet = $('#demoPriceSale').autoNumeric('get');
+                $('#PriceSale').val(demoGet);
+                $('#PriceSale').autoNumeric('set', demoGet);
+            });
+            $('#demoOriginalPrice').bind('blur focusout keypress keyup', function () {
+                var demoGet = $('#demoOriginalPrice').autoNumeric('get');
+                $('#OriginalPrice').val(demoGet);
+                $('#OriginalPrice').autoNumeric('set', demoGet);
+            });
+            $(document).ready(function () {
+                CKEDITOR.replace('txtDetail', {
+                    customConfig: '/content/ckeditor/config.js',
+                    extraAllowedContent: 'span',
+                });
+            });
+
+            $('body').on('click', '.btnXoaAnh', function () {
+                var conf = confirm('Bạn có muốn xóa ảnh này không?');
+                if (conf === true) {
+                    var _id = $(this).data('id');
+                    $('#trow_' + _id).fadeTo('fast', 0.5, function () {
+                        $(this).slideUp('fast', function () { $(this).remove(); });
+                    });
+                    var temp = $('#tCurrentId').val();
+                    var currentId = parseInt(temp) - 1;
+                    $('#tCurrentId').val(currentId);
+                }
+            });
+        });
+        function BrowseServer(field) {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                addImageProduct(fileUrl);
+            };
+            finder.popup();
+        }
+        function addImageProduct(url) {
+            var temp = $('#tCurrentId').val();
+            var currentId = parseInt(temp) + 1;
+            var str = "";
+            if (currentId == 1) {
+                str += `<tr id="trow_${currentId}">
+                <td class="text-center">${currentId}</td>
+                <td class="text-center"><img width="80" src="${url}" /> <input type='hidden' value="${url}" name="Images"/></td>
+                <td class="text-center"><input type="radio" name="rDefault" value="${currentId}" checked="checked"/></td>
+                <td class="text-center"><a href="#" data-id="${currentId}" class="btn btn-sm btn-danger btnXoaAnh">Xóa</a></td>
+                </tr>`;
+            }
+            else {
+                str += `<tr id="trow_${currentId}">
+                <td class="text-center">${currentId}</td>
+                <td class="text-center"><img width="80" src="${url}" /> <input type='hidden' value="${url}" name="Images"/></td>
+                <td class="text-center"><input type="radio" name="rDefault" value="${currentId}"/></td>
+                <td class="text-center"><a href="#" data-id="${currentId}" class="btn btn-sm btn-danger btnXoaAnh">Xóa</a></td>
+                </tr>`;
+            }
+            $('#tbHtml').append(str);
+            $('#tCurrentId').val(currentId);
+        }
+
+    </script>
+}

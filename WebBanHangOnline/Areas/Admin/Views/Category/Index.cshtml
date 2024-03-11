@@ -15,7 +15,7 @@
                         <h2>@ViewBag.title</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li>
-                                <a href="/Admin/Category/Create" class="add"><i class="fa fa-plus-square"></i></a>
+                                <a href="/Admin/Category/Create" class="add"><i class="fa fa-plus-square"> Add</i></a>
                             </li>
                         </ul>
                         <div class="clearfix"></div>
@@ -33,9 +33,8 @@
                                         <th class="column-title">Title </th>
                                         <th class="column-title">Alias </th>
                                         <th class="column-title">Position </th>
-                                        <th class="column-title">IsActive </th>
                                         <th class="column-title">Tools </th>
-                                        <th class="bulk-actions" colspan="7">
+                                        <th class="bulk-actions" colspan="5">
                                             <a class="antoo" style="color:#fff; font-weight:500;">Select ( <span class="action-cnt"> </span> )</a>
                                         </th>
                                     </tr>
@@ -55,7 +54,6 @@
                                                 <td class=" ">@item.Title</td>
                                                 <td class=" ">@item.Alias</td>
                                                 <td class=" ">@item.Position</td>
-                                                <td class=" ">@item.IsActive</td>
                                                 <td class=" last">
                                                     <a href="/admin/category/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
                                                     <a href="#" data-id="@item.Id" class="btnDelete"><i class="fa fa-trash-o"></i>Delete </a>
@@ -67,7 +65,7 @@
                                     else
                                     {
                                         <tr class="odd pointer">
-                                            <td colspan="6">Chả có cái account nào hết !!!</td>
+                                            <td colspan="5">Rỗng !!!</td>
                                         </tr>
                                     }
                                 </tbody>
