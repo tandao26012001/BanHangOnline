@@ -48,10 +48,10 @@ namespace WebBanHangOnline.Controllers
             return View(items);
         }
 
-        public ActionResult Partial_ItemsByCateId()
+        public ActionResult Partial_ProductHots()
         {
             //var items = db.Products.Where(x => x.IsHome && x.IsActive).Take(8).ToList();
-            var items = db.Products.Where(x => x.ModifiedDate > DateTime.Now && x.IsActive).Take(8).ToList();
+            var items = db.Products.Where(x => x.IsActive && x.IsHot).Take(8).ToList();
             return PartialView(items);
         }
 

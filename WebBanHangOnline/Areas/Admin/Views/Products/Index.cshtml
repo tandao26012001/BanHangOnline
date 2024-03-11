@@ -62,7 +62,7 @@
                                         <th class="column-title" style="text-align:center">CreatedDate </th>
                                         <th class="column-title" style="text-align:center">Home </th>
                                         <th class="column-title" style="text-align:center">Sale </th>
-                                        <th class="column-title" style="text-align:center">IsActive </th>
+                                        <th class="column-title" style="text-align:center">Hot </th>
                                         <th class="column-title" >Tools </th>
                                         <th class="bulk-actions" colspan="11">
                                             <a class="antoo" style="color:#fff; font-weight:500;">Select ( <span class="action-cnt"> </span> )</a>
@@ -76,7 +76,7 @@
                                         var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                                         foreach (var item in Model)
                                         {
-                                            var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
+                                            var strCheckHot = item.IsHot ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
                                             var strCheckHome = item.IsHome ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
                                             var strCheckSale = item.IsSale ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>";
                                             var strImg = "";
@@ -103,7 +103,7 @@
                                                     <a href='#' data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                                                    <a href='#' data-id="@item.Id" class="btnHot">@Html.Raw(strCheckHot)</a>
                                                 </td>
                                                 <td class=" last">
                                                     <a href="/admin/Products/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
@@ -262,18 +262,18 @@
                     }
                 });
             });
-            // on off hiển thị active
-            $('body').on('click', '.btnActive', function (e) {
+            // on off hiển thị hot
+            $('body').on('click', '.btnHot', function (e) {
                 e.preventDefault();
                 var btn = $(this);
                 var id = btn.data("id");
                 $.ajax({
-                    url: '/admin/Products/IsActive',
+                    url: '/admin/Products/IsHot',
                     type: 'POST',
                     data: { id: id },
                     success: function (rs) {
                         if (rs.success) {
-                            if (rs.isAcive) {
+                            if (rs.IsHot) {
                                 btn.html("<i class='fa fa-check text-success'></i>");
                                 //$(this).find("i").removeClass("fas fa-times text-danger")
                                 //$(this).find("i").addClass("fa fa-check text-success");
