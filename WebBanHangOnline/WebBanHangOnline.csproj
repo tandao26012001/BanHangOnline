@@ -8150,7 +8150,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Menu\_MenuTop.cshtml" />
     <Content Include="Views\Menu\_MenuProductCategory.cshtml" />
-    <Content Include="Views\Menu\_MenuArrivals.cshtml" />
+    <Content Include="Views\Menu\_MenuHots.cshtml" />
     <Content Include="Views\Products\Partial_ProductHots.cshtml" />
     <Content Include="Views\Products\Partial_ProductSales.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
@@ -8170,6 +8170,7 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Detail.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Menu\_MenuSales.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

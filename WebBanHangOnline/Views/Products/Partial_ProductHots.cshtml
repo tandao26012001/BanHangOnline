@@ -15,19 +15,16 @@
                     <img class="img-fluid w-100" src="@strImge" alt="@item.Title">
                     <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">Hot</div>
                 </div>
-                @if (item.PriceSale > 0)
-                {
-                    <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>Sale</span></div>
-                }
                 <div class="text-center p-4">
                     <a class="d-block h4 mb-2" href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a>
                     @if (item.PriceSale > 0)
                     {
-                        <span class="text-primary me-1">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</span></span>
+                        <span class="text-primary me-1">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)đ</span>
+                        <span class="text-body text-decoration-line-through">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)đ</span>
                     }
                     else
                     {
-                        <span class="text-body text-decoration-line-through">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</span>
+                        <span class="text-primary me-1">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)đ</span>
                     }
                 </div>
                 <div class="d-flex border-top">
