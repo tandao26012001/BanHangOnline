@@ -3,296 +3,61 @@
     ViewBag.Title = "Danh sách sản phẩm";
 }
 
-<!-- Product Start -->
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <h1 class="display-3 mb-3 animated slideInDown">Products</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a class="text-body" href="#">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-body" href="#">Pages</a></li>
+                <li class="breadcrumb-item text-dark active" aria-current="page">Products</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- ======= Portfolio Section ======= -->
 <div class="container-xxl py-5">
     <div class="container">
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+                <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <h1 class="display-5 mb-3">@ViewBag.title</h1>
+                    <p>Danh sách các sản phẩm hiện đang có ở web này :v</p>
+                </div>
+
+                <div class="row" data-aos="fade-up" data-aos-delay="100">
+                    @Html.Action("MenuArrivals", "Menu")
+                </div>
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                    @Html.Action("Partial_ItemByCateId", "Products")
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+    <!-- End Portfolio Section -->
+<!-- Product Start -->
+<!--<div class="container-xxl py-5">
+    <div class="container">
         <div class="row g-0 gx-5 align-items-end">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                     <h1 class="display-5 mb-3">Our Products</h1>
                     <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                 </div>
             </div>
-            <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-                @foreach (var item in Model)
-                {
-                    <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                        <li class="nav-item me-2">
-                            <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" data-filter=".@item.ProductCategory.Alias"></a>
-                        </li>
-                    </ul>
-                }
-            </div>
+            @Html.Action("MenuArrivals", "Menu")
         </div>
         <div class="tab-content">
-            <div id="tab-1" class="tab-pane fade show p-0 active">
-                <div class="row g-4">
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
-                            </div>
-                            <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                <span class="text-primary me-1">$19.00</span>
-                                <span class="text-body text-decoration-line-through">$29.00</span>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
-                            </div>
-                            <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                <span class="text-primary me-1">$19.00</span>
-                                <span class="text-body text-decoration-line-through">$29.00</span>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
-                            </div>
-                            <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                <span class="text-primary me-1">$19.00</span>
-                                <span class="text-body text-decoration-line-through">$29.00</span>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
-                            </div>
-                            <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                <span class="text-primary me-1">$19.00</span>
-                                <span class="text-body text-decoration-line-through">$29.00</span>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
-                            </div>
-                            <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                <span class="text-primary me-1">$19.00</span>
-                                <span class="text-body text-decoration-line-through">$29.00</span>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-6.jpg" alt="">
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
-                            </div>
-                            <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                <span class="text-primary me-1">$19.00</span>
-                                <span class="text-body text-decoration-line-through">$29.00</span>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-7.jpg" alt="">
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
-                            </div>
-                            <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                <span class="text-primary me-1">$19.00</span>
-                                <span class="text-body text-decoration-line-through">$29.00</span>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="product-item">
-                            <div class="position-relative bg-light overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-8.jpg" alt="">
-                                <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
-                            </div>
-                            <div class="text-center p-4">
-                                <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                <span class="text-primary me-1">$19.00</span>
-                                <span class="text-body text-decoration-line-through">$29.00</span>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="w-50 text-center border-end py-2">
-                                    <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
-                                </small>
-                                <small class="w-50 text-center py-2">
-                                    <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Products</a>
-                    </div>
-                </div>
-            </div>
+            @Html.Action("Partial_ItemByCateId", "Products")
         </div>
     </div>
-</div>
+</div>-->
 <!-- Product End -->
-<!-- Favicons -->
-<link href="~/assets/img/favicon.png" rel="icon">
-<link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-
-<!-- Vendor CSS Files -->
-<link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
-<link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-<!-- Template Main CSS File -->
-<link href="~/assets/css/style.css" rel="stylesheet">
-
-<!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio">
-    <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-            <h2>Portfolio</h2>
-            <p>Check out our beautifull portfolio</p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-            <div class="col-lg-12">
-                <ul id="portfolio-flters">
-                    <li data-filter="*" class="filter-active">All</li>
-                    @foreach (var item in Model)
-                    {
-                        <li data-filter=".@item.ProductCategory.Alias">@item.ProductCategory.Title</li>
-                    }
-                </ul>
-            </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-            @if (Model != null && Model.Any())
-            {
-                foreach (var item in Model)
-                {
-                    var strImge = "";
-                    var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
-                    if (img != null)
-                    {
-                        strImge = img.Image;
-                    }
-                    <div class="col-lg-4 col-md-6 portfolio-item @item.ProductCategory.Alias">
-                        <div class="portfolio-wrap">
-                            <img src="@strImge" class="img-fluid" alt="@item.Title">
-                            <div class="portfolio-links">
-                                <a href="#" title="Thêm giỏ hàng" data-id="@item.Id"><i class="bi bi-cart"></i></a>
-                                <a href="/chi-tiet/@item.Alias-@item.ProductCode" title="Xem thêm"><i class="bi bi-link"></i></a>
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>@item.Title</h4>
-                                <p>
-                                    @if (item.PriceSale > 0)
-                                    {
-                                        <span class="text-primary me-1">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)đ</span>
-                                        <span class="text-body text-decoration-line-through">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)đ</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="text-primary me-1">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)đ</span>
-                                    }
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                }
-            }
-
-        </div>
-
-    </div>
-</section><!-- End Portfolio Section -->
-<script src="~/assets/vendor/aos/aos.js"></script>
-<script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="~/assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="~/assets/js/main.js"></script>
 
 @section scripts{
     <script src="~/Content/js/categories_custom.js"></script>
