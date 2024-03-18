@@ -1,9 +1,10 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebBanHangOnline.Models;
+using WebBanHangOnline.Models.EF;
 
 namespace WebBanHangOnline.Controllers
 {
@@ -11,10 +12,22 @@ namespace WebBanHangOnline.Controllers
     {
         private WebBanHangOnlineDbContext db = new WebBanHangOnlineDbContext();
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string Searchtext, int? page)
         {
-            var items = db.Products.ToList();
-            
+            var pageSize = 12;
+            if (page == null)
+            {
+                page = 1;
+            }
+            IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id);
+            if (!string.IsNullOrEmpty(Searchtext))
+            {
+                items = items.Where(x => x.Alias.Contains(Searchtext) || x.Title.Contains(Searchtext));
+            }
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            items = items.ToPagedList(pageIndex, pageSize);
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
             return View(items);
         }
 

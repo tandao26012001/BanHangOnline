@@ -28,6 +28,9 @@
                     <li><a href="/admin/posts">Posts</a></li>
                     <li><a href="/admin/productcategory">ProductCategory</a></li>
                     <li><a href="/admin/products">Products</a></li>
+                    <li>
+                        <a href="#" id="iTaiAnh" onclick="BrowseServer();">Thư viện ảnh</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -73,3 +76,12 @@
     </a>
 </div>
 <!-- /menu footer buttons -->
+<script>
+    function BrowseServer(field) {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (fileUrl) {
+            addImageProduct(fileUrl);
+        };
+        finder.popup();
+    }
+</script>

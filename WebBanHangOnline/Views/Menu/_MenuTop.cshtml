@@ -2,20 +2,22 @@
 
 @if (Model != null && Model.Any())
 {
-    <div class="navbar-nav ms-auto p-4 p-lg-0">
-
-        @foreach (var item in Model)
-        {
-            if (item.Alias.Equals("trang-chu"))
+    <div class="menu-desktop">
+        <ul class="main-menu">
+            @foreach (var item in Model)
             {
-                item.Alias = "";
+                if (item.Alias.Equals("trang-chu"))
+                {
+                    item.Alias = "";
+                }
+                if (!string.IsNullOrEmpty(item.Link))
+                {
+                    item.Alias = item.Link;
+                }
+                <li>
+                    <a href="/@item.Alias">@item.Title</a>
+                </li>
             }
-            if (!string.IsNullOrEmpty(item.Link))
-            {
-                item.Alias = item.Link;
-            }
-            <a href="/@item.Alias" class="nav-item nav-link">@item.Title</a>
-        }
-
+        </ul>
     </div>
 }
