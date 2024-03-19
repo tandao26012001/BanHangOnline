@@ -1,227 +1,177 @@
 ﻿@model IEnumerable<WebBanHangOnline.Models.EF.Product>
+
 @{
-    ViewBag.Title = "Danh sách sản phẩm";
+    ViewBag.Title = "Danh mục sản phẩm";
 }
-<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
-<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">
-<div class="container product_section_container">
-    <div class="row">
-        <div class="col product_section clearfix">
 
-            <!-- Breadcrumbs -->
-
-            <div class="breadcrumbs d-flex flex-row align-items-center">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">
-                        <a href="/"><i class="fa fa-angle-right" aria-hidden="true"></i>@ViewBag.CateName</a>
-                    </li>
-                </ul>
+<div class="bg0 m-t-23 p-b-140">
+    <div class="container">
+        <div class="flex-w flex-sb-m p-b-52">
+            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
+                <h2>@ViewBag.CateName</h2>
             </div>
-
-            <!-- Sidebar -->
-
-            <div class="sidebar">
-                <div class="sidebar_section">
-                    <div class="sidebar_title">
-                        <h5>Product Category</h5>
-                    </div>
-                    @Html.Action("MenuLeft", "Menu", new { id = ViewBag.CateId })
+            <div class="flex-w flex-c-m m-tb-10">
+                <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+                    <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+                    <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                    Filter
                 </div>
 
-                <!-- Price Range Filtering -->
-                <div class="sidebar_section">
-                    <div class="sidebar_title">
-                        <h5>Filter by Price</h5>
-                    </div>
-                    <p>
-                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                        <input type="hidden" id="FromAmount"/>
-                        <input type="hidden" id="ToAmount"/>
-                    </p>
-                    <div id="slider-range"></div>
-                    <div class="filter_button"><span>filter</span></div>
-
-
+                <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+                    <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+                    <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                    Search
                 </div>
-
-                <!-- Sizes -->
-                @*<div class="sidebar_section">
-                        <div class="sidebar_title">
-                            <h5>Sizes</h5>
-                        </div>
-                        <ul class="checkboxes">
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>S</span></li>
-                            <li class="active"><i class="fa fa-square" aria-hidden="true"></i><span>M</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>L</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>XL</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>XXL</span></li>
-                        </ul>
-                    </div>*@
-
-                <!-- Color -->
-                @*<div class="sidebar_section">
-                        <div class="sidebar_title">
-                            <h5>Color</h5>
-                        </div>
-                        <ul class="checkboxes">
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Black</span></li>
-                            <li class="active"><i class="fa fa-square" aria-hidden="true"></i><span>Pink</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
-                            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
-                        </ul>
-                        <div class="show_more">
-                            <span><span>+</span>Show More</span>
-                        </div>
-                    </div>*@
-
             </div>
 
-            <!-- Main Content -->
+            <!-- Search product -->
+            <div class="dis-none panel-search w-full p-t-10 p-b-15">
+                @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { }))
+                {
+                    <div class="bor8 dis-flex p-l-15">
+                        <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" type="submit">
+                            <i class="zmdi zmdi-search"></i>
+                        </button>
+                        @Html.TextBox("Searchtext", null, new { @class = "mtext-107 cl2 size-114 plh2 p-r-15", @placeholder = "Search" })
+                    </div>
+                }
+            </div>
 
-            <div class="main_content">
+            <!-- Filter -->
+            <div class="dis-none panel-filter w-full p-t-10">
+                <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+                    <div class="filter-col1 p-r-15 p-b-27">
+                        <div class="mtext-102 cl2 p-b-15">
+                            Sort By
+                        </div>
 
-                <!-- Products -->
+                        <ul>
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    Default
+                                </a>
+                            </li>
 
-                <div class="products_iso">
-                    <div class="row">
-                        <div class="col">
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    Popularity
+                                </a>
+                            </li>
 
-                            <!-- Product Sorting -->
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    Average rating
+                                </a>
+                            </li>
 
-                            <div class="product_sorting_container product_sorting_container_top">
-                                <ul class="product_sorting">
-                                    <li>
-                                        <span class="type_sorting_text">Default Sorting</span>
-                                        <i class="fa fa-angle-down"></i>
-                                        <ul class="sorting_type">
-                                            <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default Sorting</span></li>
-                                            <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
-                                            <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Product Name</span></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span>Show</span>
-                                        <span class="num_sorting_text">6</span>
-                                        <i class="fa fa-angle-down"></i>
-                                        <ul class="sorting_num">
-                                            <li class="num_sorting_btn"><span>6</span></li>
-                                            <li class="num_sorting_btn"><span>12</span></li>
-                                            <li class="num_sorting_btn"><span>24</span></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <div class="pages d-flex flex-row align-items-center">
-                                    <div class="page_current">
-                                        <span>1</span>
-                                        <ul class="page_selection">
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                        </ul>
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+                                    Newness
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    Price: Low to High
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    Price: High to Low
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-col2 p-r-15 p-b-27">
+                        <div class="mtext-102 cl2 p-b-15">
+                            Price
+                        </div>
+
+                        <ul>
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+                                    All
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    $0.00 - $50.00
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    $50.00 - $100.00
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    $100.00 - $150.00
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    $150.00 - $200.00
+                                </a>
+                            </li>
+
+                            <li class="p-b-6">
+                                <a href="#" class="filter-link stext-106 trans-04">
+                                    $200.00+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            var strImge = "";
+                            var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+                            if (img != null)
+                            {
+                                strImge = img.Image;
+                            }
+                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item @item.ProductCategory.Alias">
+                                <!-- Block2 -->
+                                <div class="block2">
+                                    <div class="block2-pic hov-img0">
+                                        <img src="@strImge" alt="@item.Title">
                                     </div>
-                                    <div class="page_total"><span>of</span> 3</div>
-                                    <div id="next_page" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
+
+                                    <div class="block2-txt flex-w flex-t p-t-14">
+                                        <div class="block2-txt-child1 flex-col-l ">
+                                            <a href="/chi-tiet/@item.Alias-p(@item.Id)" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                @item.Title
+                                            </a>
+                                            @if (item.PriceSale > 0)
+                                            {
+                                                <span class="stext-105 cl3" style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)đ</span>
+                                                <span class="stext-105 cl3"><del>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)đ</del></span>
+                                            }
+                                            else
+                                            {
+                                                <span class="stext-105 cl3" style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)đ</span>
+                                            }
+                                        </div>
+
+                                        <div class="block2-txt-child2 flex-r p-t-3">
+                                            <a href="#" class="zmdi zmdi-shopping-cart btnAddToCart" data-id="@item.Id"></a>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
+                        }
+                    }
 
-                            <!-- Product Grid -->
-
-                            <div class="product-grid">
-
-                                <!-- Product 1 -->
-                                @if (Model != null && Model.Any())
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        var strImge = "";
-                                        var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
-                                        if (img != null)
-                                        {
-                                            strImge = img.Image;
-                                        }
-                                        <div class="product-item @item.ProductCategory.Alias">
-                                            <div class="product discount product_filter">
-                                                <div class="product_image">
-                                                    <img src="@strImge" alt="@item.Title">
-                                                </div>
-                                                <div class="favorite favorite_left"></div>
-                                                @if (item.PriceSale > 0)
-                                                {
-                                                    <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-                                                }
-                                                @* <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>*@
-                                            <div class="product_info">
-                                                <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
-                                                @if (item.PriceSale > 0)
-                                                {
-                                                    <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</span></div>
-                                                    
-                                                    <div style="display:none;" class="in_product_price"> @item.PriceSale</div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</div>
-                                                    <div style="display:none;" class="in_product_price"> @item.Price</div>
-                                                }
-                                            </div>
-                                            </div>
-                                            <div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id">add to cart</a></div>
-                                        </div>
-                                    }
-                                }
-                               
-
-                            </div>
-
-                            <!-- Product Sorting -->
-
-                            <div class="product_sorting_container product_sorting_container_bottom clearfix">
-                                <ul class="product_sorting">
-                                    <li>
-                                        <span>Show:</span>
-                                        <span class="num_sorting_text">04</span>
-                                        <i class="fa fa-angle-down"></i>
-                                        <ul class="sorting_num">
-                                            <li class="num_sorting_btn"><span>01</span></li>
-                                            <li class="num_sorting_btn"><span>02</span></li>
-                                            <li class="num_sorting_btn"><span>03</span></li>
-                                            <li class="num_sorting_btn"><span>04</span></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                @*<span class="showing_results">Showing 1–3 of 12 results</span>*@
-                                @*<div class="pages d-flex flex-row align-items-center">
-                                        <div class="page_current">
-                                            <span>1</span>
-                                            <ul class="page_selection">
-                                                <li><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="page_total"><span>of</span> 3</div>
-                                        <div id="next_page_1" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
-                                    </div>*@
-
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@section scripts{
-    <script src="~/Content/assets/js/categories_custom.js"></script>
-}

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI;
 using WebBanHangOnline.Models;
 using WebBanHangOnline.Models.EF;
 
@@ -41,7 +42,7 @@ namespace WebBanHangOnline.Controllers
                 db.Entry(item).Property(x => x.ViewCount).IsModified = true;
                 db.SaveChanges();
             }
-            
+            ViewBag.RelatedProducts = db.Products.Where(x => x.Id == id && x.ProductCategoryId == item.ProductCategoryId).ToList();
             return View(item);
         }
         public ActionResult ProductCategory(string alias,int id)
