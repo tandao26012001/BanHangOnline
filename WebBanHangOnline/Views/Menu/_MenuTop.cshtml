@@ -2,8 +2,8 @@
 
 @if (Model != null && Model.Any())
 {
-    <div class="menu-desktop">
-        <ul class="main-menu">
+    <nav class="main-menu">
+        <ul>
             @foreach (var item in Model)
             {
                 if (item.Alias.Equals("trang-chu"))
@@ -14,10 +14,16 @@
                 {
                     item.Alias = item.Link;
                 }
-                <li>
-                    <a href="/@item.Alias">@item.Title</a>
-                </li>
+                <li><a href="/@item.Alias">@item.Title</a></li>
             }
+            <li>
+                <div class="header-icons">
+                    <a class="shopping-cart" href="/gio-hang"><i class="fas fa-shopping-cart"></i></a>
+                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                </div>
+            </li>
         </ul>
-    </div>
+    </nav>
+    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+    <div class="mobile-menu"></div>
 }
