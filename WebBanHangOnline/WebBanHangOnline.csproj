@@ -212,9 +212,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202405080753265_CreatedDatabase.cs" />
-    <Compile Include="Migrations\202405080753265_CreatedDatabase.Designer.cs">
-      <DependentUpon>202405080753265_CreatedDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202405100312488_CreatedDatabase.cs" />
+    <Compile Include="Migrations\202405100312488_CreatedDatabase.Designer.cs">
+      <DependentUpon>202405100312488_CreatedDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -8219,8 +8219,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405080753265_CreatedDatabase.resx">
-      <DependentUpon>202405080753265_CreatedDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202405100312488_CreatedDatabase.resx">
+      <DependentUpon>202405100312488_CreatedDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

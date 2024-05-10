@@ -1,33 +1,24 @@
 ﻿@model IEnumerable<WebBanHangOnline.Models.EF.ProductCategory>
 @{
-    ViewBag.Title = "Sản phẩm hot";
+    ViewBag.Title = "Sản phẩm nổi bật";
 }
 @if (Model != null && Model.Any())
 {
-    <!-- Product -->
-    <section class="bg0 p-t-23 p-b-140">
+    <!-- product section -->
+    <div class="product-section mt-150 mb-150">
         <div class="container">
-            <!--header-->
-            <div class="p-b-10">
-                <h3 class="ltext-103 cl5" style="text-align:center">
-                    @ViewBag.title
-                </h3>
-            </div>
-            <!--tabview-->
-            <div class="flex-w flex-sb-m p-b-52">
-                <div class="flex-w flex-l-m filter-tope-group m-tb-10"></div>
-            </div>
-            <!--data-->
-            <div class="row isotope-grid">
-                @Html.Action("Partial_ProductHots", "Products")
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="section-title">
+                        <h3><span class="orange-text">@ViewBag.Title</span></h3>
+                        <p>Sản phẩm có lượt mua nhiều</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Load more -->
-            <div class="flex-c-m flex-w w-full p-t-45">
-                <a href="/san-pham" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-                    Load More
-                </a>
-            </div>
+            @Html.Action("Partial_ProductHots", "Products")
+
         </div>
-    </section>
+    </div>
+    <!-- end product section -->
 }
