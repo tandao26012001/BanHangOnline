@@ -212,9 +212,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202405100312488_CreatedDatabase.cs" />
-    <Compile Include="Migrations\202405100312488_CreatedDatabase.Designer.cs">
-      <DependentUpon>202405100312488_CreatedDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202405150911385_CreateDatabase.cs" />
+    <Compile Include="Migrations\202405150911385_CreateDatabase.Designer.cs">
+      <DependentUpon>202405150911385_CreateDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,6 +232,7 @@
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
     <Compile Include="Models\EF\ProductImage.cs" />
+    <Compile Include="Models\EF\SpecialOffer.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
     <Compile Include="Models\EF\SystemSetting.cs" />
     <Compile Include="Models\EF\ThongKe.cs" />
@@ -8198,6 +8199,7 @@
     <Content Include="Views\Products\Partial_ItemByCateId.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Menu\_MenuSpecialOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -8219,8 +8221,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405100312488_CreatedDatabase.resx">
-      <DependentUpon>202405100312488_CreatedDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202405150911385_CreateDatabase.resx">
+      <DependentUpon>202405150911385_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

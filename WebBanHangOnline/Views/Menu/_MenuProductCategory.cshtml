@@ -1,46 +1,33 @@
 ﻿@model IEnumerable<WebBanHangOnline.Models.EF.ProductCategory>
-@{ 
+@{
     ViewBag.title = "Danh mục sản phẩm";
 }
 @if (Model != null && Model.Any())
 {
-    <!-- Banner -->
-    <div class="sec-banner bg0 p-t-80 p-b-50">
+    <div class="testimonail-section mt-150 mb-150">
         <div class="container">
-            <!--header-->
-            <div class="p-b-10">
-                <h3 class="ltext-103 cl5" style="text-align:center">
-                    @ViewBag.title
-                </h3>
-            </div>
-            <!--tabview-->
-            <div class="flex-w flex-sb-m p-b-52">
-                <div class="flex-w flex-l-m filter-tope-group m-tb-10"></div>
-            </div>
             <div class="row">
-                @foreach (var item in Model)
-                {
-                    <div class="col-md-6 col-xl-2 p-b-30 m-lr-auto">
-                        <!-- Block1 -->
-                        <div class="block1 wrap-pic-w">
-                            <img src="@item.Icon" alt="@item.Title">
-
-                            <a href="/danh-muc-san-pham/@item.Alias-@item.Id" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                                <div class="block1-txt-child1 flex-col-l">
-                                    <span class="block1-name ltext-102 trans-04 p-b-8">
-                                        @item.Title
-                                    </span>
+                <div class="col-lg-10 offset-lg-1 text-center">
+                    <div class="testimonial-sliders">
+                        @foreach (var item in Model)
+                        {
+                            <div class="single-testimonial-slider">
+                                <div class="client-avater">
+                                    <img src="@item.Icon" alt="@item.Title">
                                 </div>
-
-                                <div class="block1-txt-child2 p-b-4 trans-05">
-                                    <div class="block1-link stext-101 cl0 trans-09">
-                                        Shop Now
+                                <div class="client-meta">
+                                    <a href="/danh-muc-san-pham/@item.Alias-@item.Id"><h3>@item.Title</h3></a>
+                                    <p class="testimonial-body">
+                                        @item.Description
+                                    </p>
+                                    <div class="last-icon">
+                                        <i class="fas fa-quote-right"></i>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        }
                     </div>
-                }
+                </div>
             </div>
         </div>
     </div>

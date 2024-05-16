@@ -52,5 +52,10 @@ namespace WebBanHangOnline.Controllers
             var items = db.ProductCategories.ToList();
             return PartialView("_MenuArrivals", items);
         }
+        public ActionResult MenuSpecialOffer()
+        {
+            var items = db.SpecialOffers.ToList();
+            return PartialView("_MenuSpecialOffer", items);
+        }
     }
 }

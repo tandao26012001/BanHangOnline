@@ -1,4 +1,11 @@
-/*Template Name: Fruitkha - Responsive Bootstrap4 Shop TemplateTemplate URI: Description: Bootstrap template for fruits or any other kind of shopAuthor: Imran HossainAuthor URI: https://imransdesign.com/Version: 1.0*/
+/*
+Template Name: Fruitkha - Responsive Bootstrap4 Shop Template
+Template URI: 
+Description: Bootstrap template for fruits or any other kind of shop
+Author: Imran Hossain
+Author URI: https://imransdesign.com/
+Version: 1.0
+*/
 /* -----------------------------------------------------------------------------
 
 # Base - Genral & Typography
@@ -1583,27 +1590,7 @@ div.owl-controls, .owl-controls div {
 
 ----------------------------------------------------------------------------- */
 .news-bg-1 {
-  background-image: url(../img/latest-news/news-bg-1.jpg);
-}
-
-.news-bg-2 {
-  background-image: url(../img/latest-news/news-bg-2.jpg);
-}
-
-.news-bg-3 {
-  background-image: url(../img/latest-news/news-bg-3.jpg);
-}
-
-.news-bg-4 {
-  background-image: url(../img/latest-news/news-bg-4.jpg);
-}
-
-.news-bg-5 {
-  background-image: url(../img/latest-news/news-bg-5.jpg);
-}
-
-.news-bg-6 {
-  background-image: url(../img/latest-news/news-bg-6.jpg);
+    background-image: url(@item.Image);
 }
 
 .latest-news-bg {
@@ -2410,9 +2397,12 @@ ul.social-link-team li a {
 }
 
 .single-product-item h3 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
 }
 
 p.product-price {
