@@ -42,7 +42,7 @@ namespace WebBanHangOnline.Controllers
                 db.Entry(item).Property(x => x.ViewCount).IsModified = true;
                 db.SaveChanges();
             }
-            ViewBag.RelatedProducts = db.Products.Where(x => x.Id == id && x.ProductCategoryId == item.ProductCategoryId).ToList();
+            ViewBag.RelatedProducts = db.Products.Where(x=>x.ProductCategoryId == id).ToList();
             return View(item);
         }
         public ActionResult ProductCategory(string alias,int id)
@@ -64,13 +64,13 @@ namespace WebBanHangOnline.Controllers
 
         public ActionResult Partial_ProductHots()
         {
-            var items = db.Products.Where(x => x.IsActive && x.IsHot).Take(8).ToList();
+            var items = db.Products.Where(x => x.IsActive && x.IsHot).Take(6).ToList();
             return PartialView(items);
         }
 
         public ActionResult Partial_ProductSales()
         {
-            var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(8).ToList();
+            var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(6).ToList();
             return PartialView(items);
         }
         public ActionResult Partial_ItemByCateId()

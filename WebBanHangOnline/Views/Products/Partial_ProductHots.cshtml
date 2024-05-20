@@ -14,7 +14,9 @@
                 <div class="product-image">
                     <a href="/chi-tiet/@item.Alias-p @item.Id"><img src="@strImge" alt="@item.Title"></a>
                 </div>
-                <h3>@item.Title</h3>
+                <a href="/chi-tiet/@item.Alias-p @item.Id">
+                    <h3>@item.Title</h3>
+                </a>
                 @if (item.PriceSale > 0)
                 {
                     <p class="product-price">
@@ -26,7 +28,7 @@
                 {
                     <p class="product-price" style="color:red;">
                         <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</span>
-</p>
+                    </p>
                 }
                 <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i> Thêm giỏ hàng</a>
             </div>

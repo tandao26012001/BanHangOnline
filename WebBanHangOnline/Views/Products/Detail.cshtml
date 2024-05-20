@@ -4,332 +4,118 @@
     ViewBag.SeoDescription = Model.SeoDescription ?? Model.Title;
     ViewBag.SeoKeyWord = Model.SeoKeywords ?? Model.Title;
     var relatedProducts = (List<WebBanHangOnline.Models.EF.Product>)ViewBag.RelatedProducts;
+    ViewBag.Title = "Chi tiết sản phẩm";
 }
 
 @if (Model != null)
-{
-    <!-- breadcrumb -->
-    <div class="container">
-        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-            <a href="/" class="stext-109 cl8 hov-cl1 trans-04">
-                Home
-                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-            </a>
-
-            <a href="/danh-muc-san-pham/@Model.ProductCategory.Alias-@Model.ProductCategoryId" class="stext-109 cl8 hov-cl1 trans-04">
-                @Model.ProductCategory.Title
-                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-            </a>
-
-            <span class="stext-109 cl4">
-                @Model.Title
-            </span>
-        </div>
-    </div>
-
-
-    <!-- Product Detail -->
-    <section class="sec-product-detail bg0 p-t-65 p-b-60">
+{<!-- breadcrumb-section -->
+    <div class="breadcrumb-section breadcrumb-bg">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-7 p-b-30">
-                    <div class="p-l-25 p-r-30 p-lr-0-lg">
-                        <div class="wrap-slick3 flex-sb flex-w">
-                            <div class="wrap-slick3-dots"></div>
-                            <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-                            <div class="slick3 gallery-lb">
-                                @foreach (var item in Model.ProductImage)
-                                {
-                                    if (item.IsDefault)
-                                    {
-                                        <div class="item-slick3" data-thumb="@item.Image">
-                                            <div class="wrap-pic-w pos-relative">
-                                                <img src="@item.Image" alt="@item.Product.Title">
-
-                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@item.Image">
-                                                    <i class="fa fa-expand"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="item-slick3" data-thumb="@item.Image">
-                                            <div class="wrap-pic-w pos-relative">
-                                                <img src="@item.Image" alt="@item.Product.Title">
-
-                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="@item.Image">
-                                                    <i class="fa fa-expand"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    }
-
-                                }
-
-                            </div>
-                        </div>
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="breadcrumb-text">
+                        <p>See more Details</p>
+                        <h1>@ViewBag.Title</h1>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- end breadcrumb section -->
 
-                <div class="col-md-6 col-lg-5 p-b-30">
-                    <div class="p-r-50 p-t-5 p-lr-0-lg">
-                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                            @Model.Title
-                        </h4>
-                        @if (Model.PriceSale > 0)
+    <!-- single product -->
+    <div class="single-product mt-150 mb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="single-product-img">
+                        <img src="@Model.Image" alt="@Model.Title">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="single-product-content">
+                        <h3>@Model.Title</h3>
+                        @if (@Model.PriceSale > 0)
                         {
-                            <span class="mtext-106 cl2" style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(Model.PriceSale, 0)đ</span><br />
-                            <span class="mtext-106 cl2"><del>@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0)đ</del></span>
+                            <p class="product-price">
+                                <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(@Model.Price, 0) đ</span>
+                                <span><del>@WebBanHangOnline.Common.Common.FormatNumber(@Model.PriceSale, 0) đ</del></span>
+                            </p>
                         }
                         else
                         {
-                            <span class="mtext-106 cl2" style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0)đ</span>
+                            <p class="product-price" style="color:red;">
+                                <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(@Model.Price, 0) đ</span>
+                            </p>
                         }
-                        <p class="stext-102 cl3 p-t-23">
-                            @Model.Description
-                        </p>
-
-                        <!--  -->
-                        <div class="p-t-33">
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-204 flex-w flex-m respon6-next">
-                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                        </div>
-
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-
-                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                        </div>
-                                    </div>
-
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                        Add to cart
-                                    </button>
-                                </div>
-                            </div>
+                        <h3>Mô tả sản phẩm: </h3>
+                        <p>@Html.Raw(Model.Detail)</p>
+                        <div class="single-product-form">
+                            <form action="index.html">
+                                <input type="number" placeholder="1" min="1">
+                            </form>
+                            <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                            <p><strong>Danh mục sản phẩm: </strong>@Model.ProductCategory.Title</p>
                         </div>
-
-                        <!--share-->
-                        <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-                            <div class="flex-m bor9 p-r-10 m-r-11">
-                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </a>
-                            </div>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bor10 m-t-50 p-t-43 p-b-40">
-                <!-- Tab01 -->
-                <div class="tab01">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item p-b-10">
-                            <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Thông tin sản phẩm</a>
-                        </li>
-                        <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
-                        </li>
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content p-t-43">
-                        <!--Description-->
-                        <div class="tab-pane fade show active" id="description" role="tabpanel">
-                            <div class="how-pos2 p-lr-15-md">
-                                <p class="stext-102 cl6">
-                                    <h3>@Model.Description</h3>
-                                    <!-- Button trigger modal -->
-                                    <br />
-                                    <!-- Button trigger modal -->
-                                    <center>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#xemthem">
-                                            Xem thêm...
-                                        </button>
-                                    </center>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="xemthem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <br /><br /><br />
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    @Html.Raw(Model.Detail)
-                                                </div>
-                                                <div class="modal-footer">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!--Review-->
-                        <div class="tab-pane fade" id="reviews" role="tabpanel">
-                            <div class="row">
-                                <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                    <div class="p-b-30 m-lr-15-sm">
-                                        <!-- Review -->
-                                        <div class="flex-w flex-t p-b-68">
-                                            <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                                <img src="images/avatar-01.jpg" alt="AVATAR">
-                                            </div>
-
-                                            <div class="size-207">
-                                                <div class="flex-w flex-sb-m p-b-17">
-                                                    <span class="mtext-107 cl2 p-r-20">
-                                                        Ariana Grande
-                                                    </span>
-
-                                                    <span class="fs-18 cl11">
-                                                        <i class="zmdi zmdi-star"></i>
-                                                        <i class="zmdi zmdi-star"></i>
-                                                        <i class="zmdi zmdi-star"></i>
-                                                        <i class="zmdi zmdi-star"></i>
-                                                        <i class="zmdi zmdi-star-half"></i>
-                                                    </span>
-                                                </div>
-
-                                                <p class="stext-102 cl6">
-                                                    Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- Add review -->
-                                        <form class="w-full">
-                                            <h5 class="mtext-108 cl2 p-b-7">
-                                                Add a review
-                                            </h5>
-
-                                            <p class="stext-102 cl6">
-                                                Your email address will not be published. Required fields are marked *
-                                            </p>
-
-                                            <div class="flex-w flex-m p-t-50 p-b-23">
-                                                <span class="stext-102 cl3 m-r-16">
-                                                    Your Rating
-                                                </span>
-
-                                                <span class="wrap-rating fs-18 cl11 pointer">
-                                                    <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                    <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                    <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                    <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                    <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                    <input class="dis-none" type="number" name="rating">
-                                                </span>
-                                            </div>
-
-                                            <div class="row p-b-25">
-                                                <div class="col-12 p-b-5">
-                                                    <label class="stext-102 cl3" for="review">Your review</label>
-                                                    <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
-                                                </div>
-
-                                                <div class="col-sm-6 p-b-5">
-                                                    <label class="stext-102 cl3" for="name">Name</label>
-                                                    <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
-                                                </div>
-
-                                                <div class="col-sm-6 p-b-5">
-                                                    <label class="stext-102 cl3" for="email">Email</label>
-                                                    <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
-                                                </div>
-                                            </div>
-
-                                            <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-                                                Submit
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <h4>Chia sẻ:</h4>
+                        <ul class="product-share">
+                            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- end single product -->
 
+    <!-- more products -->
+    <div class="more-products mb-150">
 
-    <!-- Related Products -->
-    <section class="sec-relate-product bg0 p-t-45 p-b-105">
         <div class="container">
-            <div class="p-b-45">
-                <h3 class="ltext-106 cl5 txt-center">
-                    Sản phẩm liên quan
-                </h3>
-            </div>
-
-            <!-- Slide2 -->
-            <div class="wrap-slick2">
-                <div class="slick2">
-                    @foreach (var item in relatedProducts)
-                    {
-                        var strImge = "";
-                        var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
-                        if (img != null)
-                        {
-                            strImge = img.Image;
-                        }
-                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-pic hov-img0">
-                                    <img src="@strImge" alt="@item.Title">
-                                </div>
-
-                                <div class="block2-txt flex-w flex-t p-t-14">
-                                    <div class="block2-txt-child1 flex-col-l ">
-                                        <a href="/chi-tiet/@item.Alias-p @item.Id" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            @item.Title
-                                        </a>
-                                        @if (Model.PriceSale > 0)
-                                        {
-                                            <span class="stext-105 cl3" style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(Model.PriceSale, 0)đ</span><br />
-                                            <span class="stext-105 cl3"><del>@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0)đ</del></span>
-                                        }
-                                        else
-                                        {
-                                            <span class="stext-105 cl3" style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(Model.Price, 0)đ</span>
-                                        }
-                                    </div>
-
-                                    <div class="block2-txt-child2 flex-r p-t-3">
-                                        <a href="#" class="zmdi zmdi-shopping-cart"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    }
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="section-title">
+                        <h3><span class="orange-text">Sản phẩm</span> cùng loại</h3>
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                @foreach (var item in relatedProducts)
+                {
+                    var strImge = "";
+                    var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+                    if (img != null)
+                    {
+                        strImge = img.Image;
+                    }
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <div class="single-product-item">
+                            <div class="product-image">
+                                <a href="single-product.html"><img src="@strImge" alt="@item.Title"></a>
+                            </div>
+                            <h3>@item.Title</h3>
+                            @if (@Model.PriceSale > 0)
+                            {
+                                <p class="product-price">
+                                    <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(@Model.Price, 0) đ</span>
+                                    <span><del>@WebBanHangOnline.Common.Common.FormatNumber(@Model.PriceSale, 0) đ</del></span>
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="product-price" style="color:red;">
+                                    <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(@Model.Price, 0) đ</span>
+                                </p>
+                            }
+                            <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
-    </section>
+    </div>
+    <!-- end more products -->
 }
