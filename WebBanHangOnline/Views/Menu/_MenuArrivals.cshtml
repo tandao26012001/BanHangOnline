@@ -2,15 +2,17 @@
 
 @if (Model != null && Model.Any())
 {
-    <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-        <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-            All Products
-        </button>
-        @foreach (var item in Model)
-        {
-            <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".@item.Alias">
-                @item.Title
-            </button>
-        }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="product-filters">
+                <ul>
+                    <li class="active" data-filter="*">All</li>
+                    @foreach (var item in Model)
+                    {
+                        <li data-filter=".@item.Alias">@item.Title</li>
+                    }
+                </ul>
+            </div>
+        </div>
     </div>
 }

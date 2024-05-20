@@ -94,9 +94,11 @@
                     <div class="col-lg-4 col-md-6 text-center">
                         <div class="single-product-item">
                             <div class="product-image">
-                                <a href="single-product.html"><img src="@strImge" alt="@item.Title"></a>
+                                <a href="/chi-tiet/@item.Alias-p @item.Id"><img src="@strImge" alt="@item.Title"></a>
                             </div>
-                            <h3>@item.Title</h3>
+                            <a href="/chi-tiet/@item.Alias-p @item.Id">
+                                <h3>@item.Title</h3>
+                            </a>
                             @if (@Model.PriceSale > 0)
                             {
                                 <p class="product-price">

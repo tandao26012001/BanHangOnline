@@ -2397,8 +2397,12 @@ ul.social-link-team li a {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
-    -webkit-line-clamp: 3;
     overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    -webkit-line-clamp: 3;
+    height: 75px;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
 }
 
