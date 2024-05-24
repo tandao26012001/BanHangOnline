@@ -216,6 +216,10 @@
     <Compile Include="Migrations\202405150911385_CreateDatabase.Designer.cs">
       <DependentUpon>202405150911385_CreateDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202405240759567_Updatedatabase2405.cs" />
+    <Compile Include="Migrations\202405240759567_Updatedatabase2405.Designer.cs">
+      <DependentUpon>202405240759567_Updatedatabase2405.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -8223,6 +8227,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202405150911385_CreateDatabase.resx">
       <DependentUpon>202405150911385_CreateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405240759567_Updatedatabase2405.resx">
+      <DependentUpon>202405240759567_Updatedatabase2405.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

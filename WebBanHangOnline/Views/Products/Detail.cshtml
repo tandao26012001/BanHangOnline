@@ -51,10 +51,7 @@
                         <h3>Mô tả sản phẩm: </h3>
                         <p>@Html.Raw(Model.Detail)</p>
                         <div class="single-product-form">
-                            <form action="index.html">
-                                <input type="number" placeholder="1" min="1">
-                            </form>
-                            <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                            <a href="#" class="cart-btn btnAddToCart" data-id="@Model.Id"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
                             <p><strong>Danh mục sản phẩm: </strong>@Model.ProductCategory.Title</p>
                         </div>
                         <h4>Chia sẻ:</h4>
@@ -112,7 +109,7 @@
                                     <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(@Model.Price, 0) đ</span>
                                 </p>
                             }
-                            <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                            <a href="#" class="cart-btn btnAddToCart" data-id="@item.Id"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
                         </div>
                     </div>
                 }

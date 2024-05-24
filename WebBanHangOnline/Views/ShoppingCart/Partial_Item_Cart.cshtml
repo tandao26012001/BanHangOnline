@@ -1,56 +1,80 @@
 ﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
 @using WebBanHangOnline.Common
-<table class="table">
-    <tr class="text-center">
-        <th>STT</th>
-        <th>Ảnh sản phẩm</th>
-        <th>Tên sản phẩm</th>
-        <th>Danh mục</th>
-        <th>Giá</th>
 
-        <th style="width:100px;">Số lượng</th>
-        <th>Thành tiền</th>
-        <th style="width:200px;">
+@if (Model != null && Model.Any())
+{
+    var tongtien = decimal.Zero;
+    var thanhtien = decimal.Zero;
+    var tienship = 50000;
 
-        </th>
-    </tr>
-    @if (Model != null && Model.Any())
-    {
-        var i = 0;
-        var tongtien = decimal.Zero;
-        foreach (var item in Model)
-        {
-            tongtien += item.TotalPrice;
-            <tr class="text-center" id="trow_@item.ProductId">
-                <td>@(i+1)</td>
-                <td><img src="@item.ProductImg" width="60" /></td>
-                <td>
-                    <a href="/chi-tiet/@item.Alias-p@(item.ProductId)">
-                        @item.ProductName
-                    </a>
-                </td>
-                <td>@item.CategoryName</td>
-                <td>@Common.FormatNumber(item.Price, 0)</td>
-                <td><input type="number" class="form-control" id="Quantity_@item.ProductId" value="@item.Quantity" /></td>
-                <th>@Common.FormatNumber(item.TotalPrice, 2)</th>
-                <td>
-                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-success btnUpdate">Cập nhật</a>
-                </td>
-            </tr>
-            i++;
-        }
-        <tr>
-            <th colspan="6" class="text-right">Tổng: </th>
-            <th class="text-center">@Common.FormatNumber(tongtien, 0)</th>
-            <th></th>
-        </tr>
-    
-    }
-    else
-    {
-        <tr>
-            <th colspan="7">Không có sản phẩm trong giỏ hàng!!</th>
-        </tr>
-    }
-</table>
+    <div class="row">
+
+        <div class="col-lg-10 col-md-12">
+            <div class="cart-table-wrap">
+                <table class="cart-table">
+                    <thead class="cart-table-head">
+                        <tr class="table-head-row">
+                            <th class="product-remove">Xóa</th>
+                            <th class="product-image">Ảnh sản phẩm</th>
+                            <th class="product-name">Tên sản phẩm</th>
+                            <th class="product-price">Giá sản phẩm</th>
+                            <th class="product-quantity">Số lượng</th>
+                            <th class="product-total">Cập nhật</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        tongtien += item.TotalPrice;
+                        thanhtien = tongtien + tienship;
+                        <tbody id="trow_@item.ProductId">
+                            <tr class="table-body-row">
+                                <td class="product-remove"><a href="#" class="btnDelete" data-id="@item.ProductId"><i class="far fa-window-close"></i></a></td>
+                                <td class="product-image"><img src="@item.ProductImg" alt="@item.ProductName"></td>
+                                <td class="product-name">@item.ProductName</td>
+                                <td class="product-price">@Common.FormatNumber(item.Price, 0)</td>
+                                <td class="product-quantity"><input type="number" id="Quantity_@item.ProductId" value="@item.Quantity" min="1"></td>
+                                <td class="product-remove"><a href="#" class="fas fa-sync btnUpdate" data-id="@item.ProductId"></a></td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="col-lg-2">
+            <div class="total-section">
+                <table class="total-table">
+                    <thead class="total-table-head">
+                        <tr class="table-total-row">
+                            <th>Total</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="total-data">
+                            <td><strong>Tổng tiền: </strong></td>
+                            <td>@Common.FormatNumber(tongtien, 0)</td>
+                        </tr>
+                        <tr class="total-data">
+                            <td><strong>Tiền ship: </strong></td>
+                            <td>@Common.FormatNumber(tienship, 0)</td>
+                        </tr>
+                        <tr class="total-data">
+                            <td><strong>Thành tiền: </strong></td>
+                            <td>@Common.FormatNumber(thanhtien, 0)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart-buttons">
+                <a href="/thanh-toan" class="boxed-btn black">Thanh toán</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-lg-8 offset-lg-2 text-center">
+        <p>Không có sản phẩm nào trong giỏ hàng, bấm <a href="/san-pham">vào đây</a> để mua hàng</p>
+    </div>
+}

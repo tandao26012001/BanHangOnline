@@ -19,8 +19,8 @@
                 @if (item.PriceSale > 0)
                 {
                     <p class="product-price">
-                        <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</span>
-                        <span><del>@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) đ</del></span>
+                        <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) đ</span>
+                        <span><del>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</del></span>
                     </p>
                 }
                 else
@@ -29,7 +29,7 @@
                         <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</span>
                     </p>
                 }
-                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Thêm giỏ hàng</a>
+                <a href="#" class="cart-btn btnAddToCart" data-id="@item.Id"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
             </div>
         </div>
     }

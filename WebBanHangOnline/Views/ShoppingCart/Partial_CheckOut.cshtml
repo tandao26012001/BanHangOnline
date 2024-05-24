@@ -17,31 +17,53 @@
         }
     </script>
     @Html.AntiForgeryToken()
-    <h3>Thông tin khách hàng</h3>
-    <div class="form-group">
-        <label>Họ tên khách hàng</label>
-        <input type="text" name="CustomerName" required class="form-control" autocomplete="off" />
-    </div>
-    <div class="form-group">
-        <label>Số điện thoại</label>
-        <input type="text" name="Phone" class="form-control" autocomplete="off" />
-    </div>
-    <div class="form-group">
-        <label>Địa chỉ</label>
-        <input type="text" name="Address" class="form-control" autocomplete="off" />
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        <input type="text" name="Email" class="form-control" autocomplete="off" />
-    </div>
-    <div class="form-group">
-        <label>Hình thức thanh toán</label>
-        <select class="form-control" name="TypePayment">
-            <option value="1" selected>COD</option>
-            <option value="2">Chuyển khoản</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-block btn-success">Đặt hàng</button>
+    <div class="checkout-accordion-wrap">
+        <div class="accordion" id="accordionExample">
+            <div class="card single-accordion">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Thông tin thanh toán
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="billing-address-form">
+                            <form action="#">
+                                <p><input type="text" placeholder="Họ tên khách hàng" name="CustomerName" autocomplete="off"></p>
+                                <p><input type="email" placeholder="Email" name="Email" autocomplete="off"></p>
+                                <p><input type="text" placeholder="Địa chỉ" name="Address" autocomplete="off"></p>
+                                <p><input type="tel" placeholder="Điện thoại" name="Phone" autocomplete="off" maxlength="10"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card single-accordion">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Phương thức thanh toán
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="card-details">
+                            <select class="form-control" name="TypePayment">
+                                <option value="1" selected>COD</option>
+                                <option value="2">Chuyển khoản</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-success">Đặt hàng</button>
+            </div>
+        </div>
     </div>
 }
+

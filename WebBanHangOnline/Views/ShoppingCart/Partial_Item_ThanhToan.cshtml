@@ -3,28 +3,45 @@
 
 @if (Model != null && Model.Any())
 {
-    <h3>GIỎ HÀNG <span style="float:right;position:relative"><small>@Model.Count()</small></span></h3>
-    var i = 0;
     var tongtien = decimal.Zero;
-    <div style="border:1px solid #808080;">
-        <table class="table">
-            @foreach (var item in Model)
-            {
-                tongtien += item.TotalPrice;
+    var thanhtien = decimal.Zero;
+    var tienship = 50000;
+
+    <div class="order-details-wrap">
+        <table class="order-details">
+            <thead>
                 <tr>
-                    <td>@item.ProductName</td>
-                    <td>@Common.FormatNumber(item.Price, 0)</td>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
                 </tr>
-            }
-            <tr>
-                <td>Tổng tiền</td>
-                <td>@Common.FormatNumber(tongtien, 0)</td>
-            </tr>
+            </thead>
+            <tbody class="order-details-body">
+                @foreach (var item in Model)
+                {
+                    tongtien += item.TotalPrice;
+                    thanhtien = tongtien + tienship;
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@Common.FormatNumber(item.Price, 0)</td>
+                        <td>@item.Quantity</td>
+                    </tr>
+                }
+            </tbody>
+            <tbody class="checkout-details">
+                <tr>
+                    <td>Tổng tiền sản phẩm</td>
+                    <td>@Common.FormatNumber(tongtien, 0)</td>
+                </tr>
+                <tr>
+                    <td>Tiền ship</td>
+                    <td>@Common.FormatNumber(tienship, 0)</td>
+                </tr>
+                <tr>
+                    <td>Thành tiền</td>
+                    <td>@Common.FormatNumber(thanhtien, 0)</td>
+                </tr>
+            </tbody>
         </table>
     </div>
-
-}
-else
-{
-
 }
