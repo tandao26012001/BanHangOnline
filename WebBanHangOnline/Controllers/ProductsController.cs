@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI;
 using WebBanHangOnline.Models;
 using WebBanHangOnline.Models.EF;
 
@@ -15,7 +14,7 @@ namespace WebBanHangOnline.Controllers
         // GET: Products
         public ActionResult Index(string Searchtext, int? page)
         {
-            var pageSize = 12;
+            var pageSize = 15;
             if (page == null)
             {
                 page = 1;

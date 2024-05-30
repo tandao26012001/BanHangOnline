@@ -2,63 +2,66 @@
 @using PagedList.Mvc;
 @using PagedList;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tin Tức";
 }
-<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
-<!-- Slider -->
-<style>
-    .news_section_container {
-        margin-top: 180px;
-    }
-
-    .row-item-new {
-        margin-bottom: 20px;
-    }
-
-    .title-news {
-        font-size: 24px;
-        border-bottom: 1px solid;
-        padding: 15px 0;
-        margin-bottom: 25px;
-    }
-
-    .img-box img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-</style>
-<div class="container news_section_container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="title-news"> Tin tức</h1>
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>@ViewBag.title</h1>
+                </div>
+            </div>
         </div>
     </div>
-    @if (Model != null && Model.Any())
-    {
-        foreach (var item in Model)
+</div>
+<!-- end breadcrumb section -->
+<!-- latest news -->
+<div class="latest-news mt-150 mb-150">
+    <div class="container">
+        @if (Model != null && Model.Any())
         {
-            <div class="row row-item-new">
-                <div class="col-md-3">
-                    <div class="img-box">
-                        <a href="" title="@item.Title"><img src="@item.Image" alt="@item.Title" /></a>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <style>
+                        .news-bg {
+                            background-image: url(@item.Image);
+                        }
+                    </style>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-latest-news">
+                            <a href="/@item.Alias-n@(item.Id)"><div class="latest-news-bg news-bg"></div></a>
+                            <div class="news-text-box">
+                                <h3><a href="/@item.Alias-n@(item.Id)">@item.Title</a></h3>
+                                <p class="blog-meta">
+                                    <span class="author"><i class="fas fa-user"></i>@item.CreatedBy</span>
+                                    <span class="date"><i class="fas fa-calendar"></i>@item.CreatedDate</span>
+                                </p>
+                                <p class="excerpt">@item.Description</p>
+                                <a href="/@item.Alias-n@(item.Id)" class="read-more-btn">Xem thêm<i class="fas fa-angle-right"></i></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="content-box">
-                        <h3><a href="/@item.Alias-n@(item.Id)" title="@item.Title">@item.Title</a></h3>
-                        <div class="description-box">
-                            @item.Description
+                }
+            </div>
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <div class="pagination-wrap">
+                                <ul>
+                                    <li>
+                                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         }
-        <div class="row">
-            <div class="col-6"></div>
-            <div class="col-6" style="text-align:right;">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-            </div>
-        </div>
-    }
-
+    </div>
 </div>
+<!-- end latest news -->

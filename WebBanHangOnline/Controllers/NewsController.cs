@@ -30,6 +30,7 @@ namespace WebBanHangOnline.Controllers
         public ActionResult Detail(int id)
         {
             var item = db.News.Find(id);
+            ViewBag.RelatedNews = db.News.Where(x=>x.CategoryId == id).Take(6).ToList();
             return View(item);
         }
         public ActionResult Partial_News_Home()

@@ -3,46 +3,56 @@
     ViewBag.Title = Model.SeoTitle;
     ViewBag.SeoDescription = Model.SeoDescription;
     ViewBag.SeoKeyWord = Model.SeoKeywords;
+    var relatedNews = (List<WebBanHangOnline.Models.EF.News>)ViewBag.RelatedNews;
+
 }
-<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
-<!-- Slider -->
-<style>
-    .news_section_container {
-        margin-top: 180px;
-    }
-
-    .row-item-new {
-        margin-bottom: 20px;
-    }
-
-    .title-news {
-        font-size: 24px;
-        border-bottom: 1px solid;
-        padding: 15px 0;
-        margin-bottom: 25px;
-    }
-
-    .img-box img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-</style>
-<div class="container news_section_container">
-    @if (Model != null)
-    {
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="title-news"> @Model.Title</h1>
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Read the Details</p>
+                    <h1>Single Article</h1>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                @Model.Description
-            </div>
-            <div class="col-md-12">
-                @Html.Raw(Model.Detail)
-            </div>
-        </div>
-    }
-
+    </div>
 </div>
+<!-- end breadcrumb section -->
+<!-- single article section -->
+<div class="mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="single-article-section">
+                    @if (Model != null)
+                    {
+                        <div class="single-article-text">
+                            <p class="blog-meta">
+                                <span class="author"><i class="fas fa-user"></i>@Model.CreatedBy</span>
+                                <span class="date"><i class="fas fa-calendar"></i>@Model.CreatedDate</span>
+                            </p>
+                            <h2>@Model.Title</h2>
+                            <p>@Html.Raw(Model.Detail)</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar-section">
+                    <div class="recent-posts">
+                        <h4>Tin tức liên quan</h4>
+                        @*<ul>
+                            @foreach (var item in relatedNews)
+                            {
+                                <li><a href="/@item.Alias-n@(item.Id)">@item.Title</a></li>
+                            }
+                        </ul>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end single article section -->

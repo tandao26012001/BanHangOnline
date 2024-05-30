@@ -3983,6 +3983,7 @@
     <Content Include="Content\assets\css\animate.css" />
     <Content Include="Content\assets\css\magnific-popup.css" />
     <Content Include="Content\assets\css\main.css" />
+    <Content Include="Content\assets\css\main_styles.css" />
     <Content Include="Content\assets\css\meanmenu.min.css" />
     <Content Include="Content\assets\css\owl.carousel.css" />
     <Content Include="Content\assets\css\responsive.css" />
