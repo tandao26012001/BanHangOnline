@@ -1601,9 +1601,15 @@ div.owl-controls, .owl-controls div {
 }
 
 .single-latest-news h3 {
-  font-size: 20px;
-  line-height: 1.25em;
-  font-weight: 600;
+    font-size: 20px;
+    line-height: 1.25em;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    height: 75px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .single-latest-news h3 a {
@@ -1626,8 +1632,15 @@ p.blog-meta span i {
 }
 
 p.excerpt {
-  line-height: 1.8;
-  color: #555;
+/*    line-height: 1.8;
+*/    line-height: 1.3em;
+    color: #555;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    height: 75px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .latest-news a.boxed-btn {

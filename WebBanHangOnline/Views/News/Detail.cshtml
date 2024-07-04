@@ -12,8 +12,8 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="breadcrumb-text">
-                    <p>Read the Details</p>
-                    <h1>Single Article</h1>
+                    <p></p>
+                    <h1>@Model.Title</h1>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                                 <span class="author"><i class="fas fa-user"></i>@Model.CreatedBy</span>
                                 <span class="date"><i class="fas fa-calendar"></i>@Model.CreatedDate</span>
                             </p>
-                            <h2>@Model.Title</h2>
+                            @*<h2>@Model.Title</h2>*@
                             <p>@Html.Raw(Model.Detail)</p>
                         </div>
                     }
