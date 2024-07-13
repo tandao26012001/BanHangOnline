@@ -67,6 +67,20 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                 email.SettingValue = req.SettingEmail;
                 db.Entry(email).State = System.Data.Entity.EntityState.Modified;
             }
+            //Address
+            var address = db.SystemSettings.FirstOrDefault(x => x.SettingKey.Contains("SettingAddress"));
+            if (address == null)
+            {
+                set = new SystemSetting();
+                set.SettingKey = "SettingAddress";
+                set.SettingValue = req.SettingAddress;
+                db.SystemSettings.Add(set);
+            }
+            else
+            {
+                address.SettingValue = req.SettingAddress;
+                db.Entry(address).State = System.Data.Entity.EntityState.Modified;
+            }
             //Hotline
             var Hotline = db.SystemSettings.FirstOrDefault(x => x.SettingKey.Contains("SettingHotline"));
             if (Hotline == null)

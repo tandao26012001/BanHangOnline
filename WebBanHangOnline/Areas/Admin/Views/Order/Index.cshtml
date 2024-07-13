@@ -1,88 +1,114 @@
 ﻿@model PagedList.IPagedList<WebBanHangOnline.Models.EF.Order>
 @using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Danh sách đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@section naviheader{
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">Trang chủ</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/order" class="nav-link">Danh sách đơn hàng</a>
-        </li>
-    </ul>
-}
-
-<!-- Main content -->
-<section class="content">
-
-    <!-- Default box -->
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Danh sách đơn hàng</h3>
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>@ViewBag.Title</h3>
+            </div>
+            @using (Html.BeginForm("index", "Order", FormMethod.Get, new { }))
+            {
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+                        <div class="input-group">
+                            @Html.TextBox("Searchtext", null, new { @class = "form-control" })
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-flat" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Mã đơn hàng</th>
-                        <th>Tên Khách hàng</th>
-                        <th>Phone</th>
-                        <th>Tiền</th>
-                        <th>Trạng thái</th>
-                        <th>Ngày tạo</th>
-                        <th></th>
-                    </tr>
-                </thead>
+        <div class="clearfix"></div>
 
-                <tbody>
-                    @if (Model != null && Model.Any())
-                    {
-                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
-                        foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@i</td>
-                                <td>@item.Code</td>
-                                <td>@item.CustomerName</td>
-                                <td>@item.Phone</td>
-                                <td>@WebBanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
-                                <td>@(item.TypePayment==1?"Chờ thành toán":"Đã thanh toán")</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td>
-                                    <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
-                                    <a href="#" class="btn btn-sm btn-danger btnCapNhat" data-id="@item.Id">Cập nhật</a>
-                                </td>
-                            </tr>
-                            i++;
-                        }
-                    }
-                </tbody>
-            </table>
+        <div class="row" style="display: block;">
+            <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>@ViewBag.title</h2>
+                        <div class="clearfix"></div>
+                    </div>
 
-            <div class="row">
-                <div class="col-6"></div>
-                <div class="col-6" style="text-align:right;">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th>
+                                            <input type="checkbox" id="check-all" class="flat">
+                                        </th>
+                                        <th class="column-title">#</th>
+                                        <th class="column-title">Mã dơn hàng</th>
+                                        <th class="column-title">Tên khách hàng</th>
+                                        <th class="column-title" style="text-align:center">Số điện thoại</th>
+                                        <th class="column-title" style="text-align:center">Đơn giá</th>
+                                        <th class="column-title" style="text-align:center">Trạng thái</th>
+                                        <th class="column-title" style="text-align:center">Ngày tạo</th>
+                                        <th class="column-title">Tools </th>
+                                        <th class="bulk-actions" colspan="8">
+                                            <a class="antoo" style="color:#fff; font-weight:500;">Select ( <span class="action-cnt"> </span> )</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                                        foreach (var item in Model)
+                                        {
+                                            <tr class="odd pointer" id="trow_@item.Id">
+                                                <td class="a-center ">
+                                                    <input type="checkbox" class="flat" name="table_records" value="@item.Id">
+                                                </td>
+                                                <td>@i</td>
+                                                <td>@item.Code</td>
+                                                <td>@item.CustomerName</td>
+                                                <td>@item.Phone</td>
+                                                <td>@WebBanHangOnline.Common.Common.FormatNumber(item.TotalAmount, 0)</td>
+                                                <td>@(item.TypePayment==1?"Chờ thành toán":"Đã thanh toán")</td>
+                                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                                <td>
+                                                    <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
+                                                    <a href="#" class="btn btn-sm btn-danger btnCapNhat" data-id="@item.Id">Cập nhật</a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr class="odd pointer">
+                                            <td colspan="8">Thông tin trống !!!</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            <div class="row">
+                                <div class="col-6"></div>
+                                <div class="col-6" style="text-align:right">
+                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-
-        </div>
-        <!-- /.card-footer-->
     </div>
-    <!-- /.card -->
-
-</section>
-<!-- /.content -->
+</div>
+<div id="dialog">
+    <iframe id="myIframe" style="border: 0; width: 100%; height: 100%;"></iframe>
+</div>
+<!-- /page content -->
 
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
@@ -98,6 +124,9 @@
                 <div class="form-group">
                     <label>Trạng thái</label>
                     <select class="form-control" id="ddTrangThai">
+                        <option value="1">
+                            Chờ thành toán
+                        </option>
                         <option value="2">
                             Đã thanh toán
                         </option>

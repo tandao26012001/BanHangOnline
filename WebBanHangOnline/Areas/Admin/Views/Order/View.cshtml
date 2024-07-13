@@ -3,20 +3,7 @@
 @{
     ViewBag.Title = "Chi tiết đơn hàng";
 }
-@section naviheader{
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">Trang chủ</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Chi tiết đơn hàng</a>
-        </li>
-    </ul>
-}
+
 
 <!-- Main content -->
 <section class="content">
@@ -73,7 +60,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Trạng thái</label>
-                        <p class="form-control">@(Model.TypePayment == 1 ? "Chua thanh toán" : "Đã thanh toán")</p>
+                        <p class="form-control">@(Model.TypePayment == 1 ? "Chưa thanh toán" : "Đã thanh toán")</p>
                     </div>
                 </div>
                 <div class="col-md-6">

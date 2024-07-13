@@ -25,14 +25,14 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    <style>
+                    @*<style>
                         .news-bg {
                             background-image: url(@item.Image);
                         }
-                    </style>
+                    </style>*@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-latest-news">
-                            <a href="/@item.Alias-n@(item.Id)"><div class="latest-news-bg news-bg">@item.Image</div></a>
+                            <a href="/@item.Alias-n@(item.Id)"><div class="latest-news-bg news-bg" style="background-image: url(@item.Image);"></div></a>
                             <div class="news-text-box">
                                 <h3><a href="/@item.Alias-n@(item.Id)">@item.Title</a></h3>
                                 <p class="blog-meta">

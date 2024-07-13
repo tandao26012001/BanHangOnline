@@ -93,7 +93,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng, vui lòng kiểm tra lại");
                     return View(model);
             }
         }
