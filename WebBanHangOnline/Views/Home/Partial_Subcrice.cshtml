@@ -1,36 +1,31 @@
 ﻿@model WebBanHangOnline.Models.EF.Subscribe
 
+<!-- Newsletter -->
 <div class="col-lg-3 col-md-6">
     <div class="footer-box subscribe">
-        <h2 class="widget-title">Đăng ký nhận thông tin</h2>
-        <p>Đăng ký ngay để nhận thêm ưu đãi mới nhất.</p>
-        <form action="">
-            @using (Ajax.BeginForm("Subscribe", "Home", new AjaxOptions
-            {
-                OnBegin = "OnBeginSub",
-                OnSuccess = "OnSuccessSub",
-                OnFailure = "OnFailureSub"
-            }))
-            {
-                @Html.AntiForgeryToken()
-                <script>
-                    function OnBeginSub() {
+        <h2 class="widget-title">Đăng ký</h2>
+        <p>Đăng ký để nhận được những cập nhật mới nhất.</p>
+        @using (Ajax.BeginForm("Subscribe", "Home", new AjaxOptions
+        {
+            OnBegin = "OnBeginSub",
+            OnSuccess = "OnSuccessSub",
+            OnFailure = "OnFailureSub"
+        }))
+        {
+            @Html.AntiForgeryToken()
+            <script>
+                function OnBeginSub() {
 
+                }
+                function OnSuccessSub(rs) {
+                    if (rs.Success) {
+                        alert("Đã đăng ký");
                     }
-                    function OnSuccessSub(rs) {
-                        if (rs.Success) {
-                            alert("OK");
-                        }
-                    }
-                    function OnFailureSub(rs) { }
-                </script>
-                <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
-                    @*@Html.TextBoxFor(x => x.Email, new {})*@
-                    <input id="newsletter_email" name="Email" type="email" placeholder="Your email" required="required" data-error="Valid email is required.">
-                    <button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Submit</button>
-                </div>
-            }
-            @*<button type="submit"><i class="fas fa-paper-plane"></i></button>*@
-        </form>
+                }
+                function OnFailureSub(rs) { }
+            </script>
+            <input type="email" placeholder="Your email" name="Email" required="required" data-error="Valid email is required.">
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        }
     </div>
 </div>

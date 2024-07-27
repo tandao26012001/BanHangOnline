@@ -37,10 +37,10 @@ namespace WebBanHangOnline
              namespaces: new[] { "WebBanHangOnline.Controllers" }
          );
             routes.MapRoute(
-            name: "BaiViet",
-            url: "post/{alias}",
-            defaults: new { controller = "Article", action = "Index", alias = UrlParameter.Optional },
-            namespaces: new[] { "WebBanHangOnline.Controllers" }
+                name: "BaiViet",
+                url: "post/{alias}",
+                defaults: new { controller = "Article", action = "Index", alias = UrlParameter.Optional },
+                namespaces: new[] { "WebBanHangOnline.Controllers" }
         );
             routes.MapRoute(
               name: "detailProduct",
@@ -55,16 +55,16 @@ namespace WebBanHangOnline
                namespaces: new[] { "WebBanHangOnline.Controllers" }
            );
             routes.MapRoute(
-          name: "DetailNew",
-          url: "{alias}-n{id}",
-          defaults: new { controller = "News", action = "Detail", id = UrlParameter.Optional },
-          namespaces: new[] { "WebBanHangOnline.Controllers" }
+              name: "DetailNew",
+              url: "{alias}-n{id}",
+              defaults: new { controller = "News", action = "Detail", id = UrlParameter.Optional },
+              namespaces: new[] { "WebBanHangOnline.Controllers" }
       );
             routes.MapRoute(
-             name: "NewsList",
-             url: "tin-tuc",
-             defaults: new { controller = "News", action = "Index", alias = UrlParameter.Optional },
-             namespaces: new[] { "WebBanHangOnline.Controllers" }
+                 name: "NewsList",
+                 url: "tin-tuc",
+                 defaults: new { controller = "News", action = "Index", alias = UrlParameter.Optional },
+                 namespaces: new[] { "WebBanHangOnline.Controllers" }
          );
             routes.MapRoute(
                 name: "Default",

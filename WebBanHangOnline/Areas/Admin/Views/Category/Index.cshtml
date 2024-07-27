@@ -1,83 +1,76 @@
 ﻿@model IEnumerable<WebBanHangOnline.Models.EF.Category>
 @{
-    ViewBag.Title = "Thêm mới danh mục";
+    ViewBag.Title = "Danh mục";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<!-- page content -->
-<div class="right_col" role="main">
-    <div class="">
-        <div class="clearfix"></div>
-        <div class="row" style="display: block;">
-            <div class="col-md-12 col-sm-12  ">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>@ViewBag.title</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li>
-                                <a href="/Admin/Category/Create" class="add"><i class="fa fa-plus-square"> Add</i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-                    <div class="x_content">
-                        <div class="table-responsive">
-                            <table class="table table-striped jambo_table bulk_action">
-                                <thead>
-                                    <tr class="headings">
-                                        <th>
-                                            <input type="checkbox" id="check-all" class="flat">
-                                        </th>
-                                        <th class="column-title">#</th>
-                                        <th class="column-title">Title </th>
-                                        <th class="column-title">Alias </th>
-                                        <th class="column-title">Position </th>
-                                        <th class="column-title">Tools </th>
-                                        <th class="bulk-actions" colspan="5">
-                                            <a class="antoo" style="color:#fff; font-weight:500;">Select ( <span class="action-cnt"> </span> )</a>
-                                        </th>
-                                    </tr>
-                                </thead>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">@ViewBag.Title</h1>
+    @*<p class="mb-4">
+            DataTables is a third party plugin that is used to generate the demo table below.
+            For more information about DataTables, please visit the
+            <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
+        </p>*@
 
-                                <tbody>
-                                    @if (Model != null && Model.Any())
-                                    {
-                                        var i = 1;
-                                        foreach (var item in Model)
-                                        {
-                                            <tr class="odd pointer" id="trow_@item.Id">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">@i</td>
-                                                <td class=" ">@item.Title</td>
-                                                <td class=" ">@item.Alias</td>
-                                                <td class=" ">@item.Position</td>
-                                                <td class=" last">
-                                                    <a href="/admin/category/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
-                                                    <a href="#" data-id="@item.Id" class="btnDelete"><i class="fa fa-trash-o"></i>Delete </a>
-                                                </td>
-                                            </tr>
-                                            i++;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <tr class="odd pointer">
-                                            <td colspan="5">Rỗng !!!</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách danh mục</h6>
+            <a href="/Admin/Category/Create" class="btn btn-check">Thêm mới</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>#</th>
+                            <th>Tên danh mục</th>
+                            <th>Vị trí hiển thị</th>
+                            <th>Công cụ</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>#</th>
+                            <th>Tên danh mục</th>
+                            <th>Vị trí hiển thị</th>
+                            <th>Công cụ</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            var i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="a-center ">
+                                        <input type="checkbox">
+                                    </td>
+                                    <td>@i</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Position</td>
+                                    <td>
+                                        <a href="/admin/category/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
+                                        <a href="#" data-id="@item.Id" class="btnDelete"><i class="fa fa-trash-o"></i>Delete </a>
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
 </div>
-<!-- /page content -->
+<!-- /.container-fluid -->
 
 @section scripts{
     <script>

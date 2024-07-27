@@ -24,6 +24,7 @@ namespace WebBanHangOnline.Controllers
             return PartialView();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Subscribe(Subscribe req)
         {
             if (ModelState.IsValid)

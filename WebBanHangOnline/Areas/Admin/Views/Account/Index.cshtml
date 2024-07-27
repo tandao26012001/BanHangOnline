@@ -1,81 +1,78 @@
 ﻿@model IEnumerable<WebBanHangOnline.Models.ApplicationUser>
 @{
-    ViewBag.Title = "Quản lý tài khoản";
+    ViewBag.Title = "Quản lý người dùng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<!-- page content -->
-<div class="right_col" role="main">
-    <div class="">
-        <div class="clearfix"></div>
-        <div class="row" style="display: block;">
-            <div class="col-md-12 col-sm-12  ">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Account <small>Danh sách tài khoản</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li>
-                                <a href="/Admin/Account/Create" class="add"><i class="fa fa-plus-square"></i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-                    <div class="x_content">
-                        <div class="table-responsive">
-                            <table class="table table-striped jambo_table bulk_action">
-                                <thead>
-                                    <tr class="headings">
-                                        <th>
-                                            <input type="checkbox" id="check-all" class="flat">
-                                        </th>
-                                        <th class="column-title">#</th>
-                                        <th class="column-title">User name</th>
-                                        <th class="column-title">Full name </th>
-                                        <th class="column-title">Phone number</th>
-                                        <th class="column-title">Email </th>
-                                        <th class="bulk-actions" colspan="6">
-                                            <a class="antoo" style="color:#fff; font-weight:500;">Select ( <span class="action-cnt"> </span> )</a>
-                                        </th>
-                                    </tr>
-                                </thead>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">@ViewBag.Title</h1>
+    @*<p class="mb-4">
+            DataTables is a third party plugin that is used to generate the demo table below.
+            For more information about DataTables, please visit the
+            <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
+        </p>*@
 
-                                <tbody>
-                                    @if (Model != null && Model.Any())
-                                    {
-                                        var i = 1;
-                                        foreach (var item in Model)
-                                        {
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">@i</td>
-                                                <td class=" ">@item.UserName</td>
-                                                <td class=" ">@item.FullName</td>
-                                                <td class=" ">@item.Phone</td>
-                                                <td class=" ">@item.Email</td>
-                                                @*<td class=" last">
-                                                        <a href="/admin/account/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
-                                                        <a href="#" data-user="@item.Id"><i class="fa fa-trash-o"></i>Delete </a>
-                                                    </td>*@
-                                            </tr>
-                                            i++;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <tr class="odd pointer">
-                                            <td colspan="6">Chả có cái account nào hết !!!</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách người dùng</h6>
+            <a href="/Admin/Account/Create" class="btn btn-check">Thêm mới</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>#</th>
+                            <th>Họ tên</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Công cụ</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>#</th>
+                            <th>Họ tên</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            var i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="a-center ">
+                                        <input type="checkbox" class="flat" name="table_records">
+                                    </td>
+                                    <td>@i</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.Adress</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Email</td>
+                                    <td>
+                                        <a href="/admin/account/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
+                                        <a href="#" data-user="@item.Id"><i class="fa fa-trash"></i>Delete </a>
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
 </div>
-<!-- /page content -->
+<!-- /.container-fluid -->
