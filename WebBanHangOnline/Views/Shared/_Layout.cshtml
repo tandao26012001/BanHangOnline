@@ -1,173 +1,222 @@
-﻿@using WebBanHangOnline.Common
+﻿<!DOCTYPE html>
+<html lang="zxx">
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Male-Fashion | Template</title>
 
-    <!-- title -->
-    <title>Fruitkha</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
 
-    <!-- favicon -->
-    <link rel="shortcut icon" type="image/png" href="~/Content/assets/img/favicon.png">
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-    <!-- fontawesome -->
-    <link href="~/Content/assets/css/all.min.css" rel="stylesheet" />
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="~/Content/assets/bootstrap/css/bootstrap.min.css">
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.css">
-    <!-- magnific popup -->
-    <link rel="stylesheet" href="~/Content/assets/css/magnific-popup.css">
-    <!-- animate css -->
-    <link rel="stylesheet" href="~/Content/assets/css/animate.css">
-    <!-- mean menu css -->
-    <link rel="stylesheet" href="~/Content/assets/css/meanmenu.min.css">
-    <!-- main style -->
-    <link rel="stylesheet" href="/Content/assets/css/main.css">
-    <!-- responsive -->
-    <link rel="stylesheet" href="~/Content/assets/css/responsive.css">
-    <link href="~/Content/PagedList.css" rel="stylesheet" />
-
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Content/assets/client/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/assets/client/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/assets/client/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/assets/client/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/assets/client/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/assets/client/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/assets/client/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/assets/client/css/style.css" type="text/css">
 </head>
-<body>
 
-    <!--PreLoader-->
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__option">
+            <div class="offcanvas__links">
+                <a href="#">Sign in</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="offcanvas__top__hover">
+                <span>Usd <i class="arrow_carrot-down"></i></span>
+                <ul>
+                    <li>USD</li>
+                    <li>EUR</li>
+                    <li>USD</li>
+                </ul>
+            </div>
+        </div>
+        <div class="offcanvas__nav__option">
+            <a href="#" class="search-switch"><img src="/Content/assets/client/img/icon/search.png" alt=""></a>
+            <a href="#"><img src="/Content/assets/client/img/icon/heart.png" alt=""></a>
+            <a href="#"><img src="/Content/assets/client/img/icon/cart.png" alt=""> <span>0</span></a>
+            <div class="price">$0.00</div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__text">
+            <p>Free shipping, 30-day return or refund guarantee.</p>
         </div>
     </div>
-    <!--PreLoader Ends-->
-    <!-- header -->
-    <div class="top-header-area" id="sticker">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-sm-12 text-center">
-                    <div class="main-menu-wrap">
-                        <!-- logo -->
-                        <div class="site-logo">
-                            <a href="/">
-                                <img src="~/Content/assets/img/logo.png" alt="">
-                            </a>
+    <!-- Offcanvas Menu End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="header__top__left">
+                            <p>Free shipping, 30-day return or refund guarantee.</p>
                         </div>
-                        <!-- logo -->
-                        <!-- menu start -->
-                        @Html.Action("MenuTop", "Menu")
-                        <!-- menu end -->
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="header__top__right">
+                            <div class="header__top__links">
+                                <a href="#">Sign in</a>
+                                <a href="#">FAQs</a>
+                            </div>
+                            <div class="header__top__hover">
+                                <span>Usd <i class="arrow_carrot-down"></i></span>
+                                <ul>
+                                    <li>USD</li>
+                                    <li>EUR</li>
+                                    <li>USD</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end header -->
-    <!-- search area -->
-    <div class="search-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <span class="close-btn"><i class="fas fa-window-close"></i></span>
-                    <div class="search-bar">
-                        <div class="search-bar-tablecell">
-                            <h3>Search For:</h3>
-                            <input type="text" placeholder="Keywords">
-                            <button type="submit">Search <i class="fas fa-search"></i></button>
-                        </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="/trang-chu"><img src="/Content/assets/client/img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="/trang-chu">Home</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
+                            <li>
+                                <a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="./about.html">About Us</a></li>
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contacts</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__nav__option">
+                        <a href="#" class="search-switch"><img src="/Content/assets/client/img/icon/search.png" alt=""></a>
+                        <a href="#"><img src="/Content/assets/client/img/icon/heart.png" alt=""></a>
+                        <a href="#"><img src="/Content/assets/client/img/icon/cart.png" alt=""> <span>0</span></a>
+                        <div class="price">$0.00</div>
                     </div>
                 </div>
             </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
-    </div>
-    <!-- end search area -->
+    </header>
+    <!-- Header Section End -->
     @RenderBody()
-    <!-- footer -->
-    <div class="footer-area">
+    <!-- Footer Section Begin -->
+    <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-box about-widget">
-                        <h2 class="widget-title">Giới thiệu</h2>
-                        <p>Shop bán đồ linh tinh đó !?</p>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="/Content/assets/client/img/footer-logo.png" alt=""></a>
+                        </div>
+                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <a href="#"><img src="/Content/assets/client/img/payment.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-box get-in-touch">
-                        <h2 class="widget-title">Địa chỉ cơ sở</h2>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
                         <ul>
-                            <li>Địa chỉ: @SettingHelper.GetValue("SettingAddress")</li>
-                            <li>Mail liên hệ: @SettingHelper.GetValue("SettingEmail")</li>
-                            <li>Hotline: @SettingHelper.GetValue("SettingHotline")</li>
+                            <li><a href="#">Clothing Store</a></li>
+                            <li><a href="#">Trending Shoes</a></li>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Sale</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-box pages">
-                        <h2 class="widget-title">Trang</h2>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
                         <ul>
-                            <li><a href="/">Trang chủ</a></li>
-                            <li><a href="/gioi-thieu">Giới thiệu</a></li>
-                            <li><a href="/san-pham">Sản phẩm</a></li>
-                            <li><a href="/tin-tuc">Tin tức</a></li>
-                            <li><a href="/lien-he">Liên hệ</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Delivary</a></li>
+                            <li><a href="#">Return & Exchanges</a></li>
                         </ul>
                     </div>
                 </div>
-                @Html.Action("Partial_Subcrice", "Home")
-            </div>
-        </div>
-    </div>
-    <!-- end footer -->
-    <!-- copyright -->
-    <div class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
-                </div>
-                <div class="col-lg-6 text-right col-md-12">
-                    <div class="social-icons">
-                        <ul>
-                            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                            <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-                        </ul>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>NewLetter</h6>
+                        <div class="footer__newslatter">
+                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Your email">
+                                <button type="submit"><span class="icon_mail_alt"></span></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>
+                            Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2020
+                            All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
         </div>
     </div>
-    <!-- end copyright -->
-    <!-- jquery -->
-    <script src="~/Content/assets/js/jquery-1.11.3.min.js"></script>
-    <!-- bootstrap -->
-    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
-    <!-- count down -->
-    <script src="~/Content/assets/js/jquery.countdown.js"></script>
-    <!-- isotope -->
-    <script src="~/Content/assets/js/jquery.isotope-3.0.6.min.js"></script>
-    <!-- waypoints -->
-    <script src="~/Content/assets/js/waypoints.js"></script>
-    <!-- owl carousel -->
-    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
-    <!-- magnific popup -->
-    <script src="~/Content/assets/js/jquery.magnific-popup.min.js"></script>
-    <!-- mean menu -->
-    <script src="~/Content/assets/js/jquery.meanmenu.min.js"></script>
-    <!-- sticker js -->
-    <script src="~/Content/assets/js/sticker.js"></script>
-    <!-- main js -->
-    <script src="~/Content/assets/js/main.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/jsShopping.js"></script>
-    @RenderSection("scripts", required: false)
+    <!-- Search End -->
+    <!-- Js Plugins -->
+    <script src="~/Content/assets/client/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/assets/client/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/client/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/assets/client/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/assets/client/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/assets/client/js/jquery.countdown.min.js"></script>
+    <script src="~/Content/assets/client/js/jquery.slicknav.js"></script>
+    <script src="~/Content/assets/client/js/mixitup.min.js"></script>
+    <script src="~/Content/assets/client/js/owl.carousel.min.js"></script>
+    <script src="~/Content/assets/client/js/main.js"></script>
 </body>
+
 </html>

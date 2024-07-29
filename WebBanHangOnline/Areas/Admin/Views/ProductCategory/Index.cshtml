@@ -4,95 +4,63 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Quản lý danh mục sản phẩm</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">@ViewBag.Title</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
-</section>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-<!-- Main content -->
-<section class="content">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">@ViewBag.Title</h1>
+    @*<p class="mb-4">
+            DataTables is a third party plugin that is used to generate the demo table below.
+            For more information about DataTables, please visit the
+            <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
+        </p>*@
 
-    <!-- Default box -->
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Danh sách @ViewBag.Title</h3>
-
-            <div class="card-tools">
-                <a href="/admin/ProductCategory/add" class="btn btn-primary">Thêm mới</a>
-                <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
-            </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a href="/Admin/ProductCategory/Create" class="btn btn-primary">Thêm mới</a>
+            <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
         </div>
         <div class="card-body">
-          
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox" id="SelectAll" /></th>
-                        <th>STT</th>
-                        <th>Tiêu đề</th>
-                        <th>Ngày tạo</th>
-                        @*<th>Hiển thị</th>*@
-
-                        <th style="width:150px;"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model.Any())
-                    {
-                        var i =  1;
-                        foreach (var item in Model)
-                        {
-                            //var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-                            <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
-                                <td>@i</td>
-                                <td>@item.Title</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                @*<td class="text-center">
-                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-                                </td>*@
-                                <td>
-                                    <a href="/admin/productcategory/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-                                </td>
-                            </tr>
-                            i++;
-                        }
-                    }
-                    else
-                    {
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
                         <tr>
-                            <td colspan="4">Không có bản ghi nào!!!</td>
+                            <th><input type="checkbox" id="SelectAll" /></th>
+                            <th>#</th>
+                            <th>Tiêu đề</th>
+                            <th>Công cụ</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-
-           
-
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            var i = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr id="trow_@item.Id">
+                                    <td class="a-center ">
+                                        <input type="checkbox" class="flat" name="table_records">
+                                    </td>
+                                    <td>@i</td>
+                                    <td>@item.Title</td>
+                                    <td>
+                                        <a href="/admin/account/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
+                                        <a href="#" data-user="@item.Id"><i class="fa fa-trash"></i>Delete </a>
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-
-        </div>
-        <!-- /.card-footer-->
     </div>
-    <!-- /.card -->
 
-</section>
-<!-- /.content -->
+</div>
+<!-- /.container-fluid -->
+
 
 @section scripts{
     <script>

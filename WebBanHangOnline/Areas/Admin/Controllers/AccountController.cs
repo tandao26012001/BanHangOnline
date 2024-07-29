@@ -177,5 +177,18 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                 ModelState.AddModelError("", error);
             }
         }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var item = db.Users.Find(id);
+            if (item != null)
+            {
+                //var DeleteItem = db.Categories.Attach(item);
+                db.Users.Remove(item);
+                db.SaveChanges();
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
     }
 }
