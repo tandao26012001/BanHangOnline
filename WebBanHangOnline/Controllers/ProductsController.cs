@@ -31,7 +31,7 @@ namespace WebBanHangOnline.Controllers
             return View(items);
         }
 
-        public ActionResult Detail(string alias,int id)
+        public ActionResult Detail(string alias, int id)
         {
             var item = db.Products.Find(id);
             if (item != null)
@@ -41,10 +41,10 @@ namespace WebBanHangOnline.Controllers
                 db.Entry(item).Property(x => x.ViewCount).IsModified = true;
                 db.SaveChanges();
             }
-            ViewBag.RelatedProducts = db.Products.Where(x=>x.Id != id && x.ProductCategoryId ==item.ProductCategoryId).ToList();
+            ViewBag.RelatedProducts = db.Products.Where(x => x.Id != id && x.ProductCategoryId == item.ProductCategoryId).ToList();
             return View(item);
         }
-        public ActionResult ProductCategory(string alias,int id)
+        public ActionResult ProductCategory(string alias, int id)
         {
             var items = db.Products.ToList();
             if (id > 0)
@@ -63,13 +63,17 @@ namespace WebBanHangOnline.Controllers
 
         public ActionResult Partial_ProductHots()
         {
-            var items = db.Products.Where(x => x.IsActive && x.IsHot).Take(6).ToList();
+            var items = db.Products.Where(x => x.IsActive && x.IsHot).Take(8).ToList();
             return PartialView(items);
         }
-
+        public ActionResult Partial_ProductFeature()
+        {
+            var items = db.Products.Where(x => x.IsActive && x.IsFeature).Take(8).ToList();
+            return PartialView(items);
+        }
         public ActionResult Partial_ProductSales()
         {
-            var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(6).ToList();
+            var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(8).ToList();
             return PartialView(items);
         }
         public ActionResult Partial_ItemByCateId()

@@ -2,29 +2,52 @@
 
 @if (Model != null && Model.Any())
 {
-    <nav class="main-menu">
-        <ul>
-            @foreach (var item in Model)
-            {
-                if (item.Alias.Equals("trang-chu"))
-                {
-                    item.Alias = "";
-                }
-                if (!string.IsNullOrEmpty(item.Link))
-                {
-                    item.Alias = item.Link;
-                }
-                <li><a href="/@item.Alias">@item.Title</a></li>
-            }
-            <li>
-                <div class="header-icons">
-                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                    <a class="mobile-hide search-bar-icon" href="/Account/Login"><i class="fas fa-user"></i></a>
-                    <a class="shopping-cart" href="/gio-hang"><i class="fas fa-shopping-cart"></i></a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+    @*<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>*@
     <div class="mobile-menu"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="header__logo">
+                    <a href="/"><img src="/Content/assets/client/img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <nav class="header__menu mobile-menu">
+                    <ul>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Alias.Equals("trang-chu"))
+                            {
+                                item.Alias = "";
+                            }
+                            if (!string.IsNullOrEmpty(item.Link))
+                            {
+                                item.Alias = item.Link;
+                            }
+                            <li><a href="/@item.Alias">@item.Title</a></li>
+                        }
+                        @*<li>
+                                <a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="./about.html">About Us</a></li>
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>*@
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="header__nav__option">
+                    <a href="#" class="search-switch"><img src="/Content/assets/client/img/icon/search.png" alt=""></a>
+                    <a href="#"><img src="/Content/assets/client/img/icon/heart.png" alt=""></a>
+                    <a href="#"><img src="/Content/assets/client/img/icon/cart.png" alt=""> <span>0</span></a>
+                    <div class="price">$0.00</div>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>
 }

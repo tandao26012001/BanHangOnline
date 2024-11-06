@@ -4,28 +4,23 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WebBanHangOnline.Models.EF
 {
-    [Table("tb_SpecialOffers")]
-    public class SpecialOffer:CommonAbstract
+    [Table("tb_Slides")]
+    public class Slides : CommonAbstract
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Bạn không để trống tiêu đề")]
         [StringLength(150)]
         public string Title { get; set; }
-        [StringLength(150)]
-        public string TitleProductCategory { get; set; }
-        [StringLength(5000)]
-        public string ProductSaleName { get; set; }
-        [StringLength(250)]
+        public string Description { get; set; }
+        [AllowHtml]
+        public string Detail { get; set; }
         public string Image { get; set; }
-        [StringLength(50)]
-        public string PercentageDiscount { get; set; }
-        public DateTime PromotionTime { get; set; }
         public bool IsActive { get; set; }
-
     }
 }

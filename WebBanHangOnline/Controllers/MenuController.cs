@@ -36,17 +36,6 @@ namespace WebBanHangOnline.Controllers
             var items = db.ProductCategories.ToList();
             return PartialView("_MenuLeft", items);
         }
-
-        public ActionResult MenuHots()
-        {
-            var items = db.ProductCategories.ToList();
-            return PartialView("_MenuHots", items);
-        }
-        public ActionResult MenuSales()
-        {
-            var items = db.ProductCategories.ToList();
-            return PartialView("_MenuSales", items);
-        }
         public ActionResult MenuArrivals()
         {
             var items = db.ProductCategories.ToList();
@@ -56,6 +45,16 @@ namespace WebBanHangOnline.Controllers
         {
             var items = db.SpecialOffers.ToList();
             return PartialView("_MenuSpecialOffer", items);
+        }
+        public ActionResult MenuSlides()
+        {
+            var items = db.Slides.ToList();
+            return PartialView("_MenuSlides", items);
+        }
+        public ActionResult MenuBanners()
+        {
+            var items = db.Banners.ToList();
+            return PartialView("_MenuBanners", items);
         }
     }
 }

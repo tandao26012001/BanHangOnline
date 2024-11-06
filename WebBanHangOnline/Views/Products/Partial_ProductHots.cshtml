@@ -9,7 +9,7 @@
         {
             strImge = img.Image;
         }
-        <div class="col-lg-4 col-md-6 text-center">
+        @*<div class="col-lg-4 col-md-6 text-center">
             <div class="single-product-item">
                 <div class="product-image">
                     <a href="/chi-tiet/@item.Alias-p @item.Id"><img src="@strImge" alt="@item.Title"></a>
@@ -31,6 +31,52 @@
                     </p>
                 }
                 <a href="#" class="cart-btn btnAddToCart" data-id="@item.Id"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
+            </div>
+        </div>*@
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot">
+            <div class="product__item sale">
+                <div class="product__item__pic set-bg" data-setbg="@strImge">
+                    <span class="label">Hot</span>
+                    <ul class="product__hover">
+                        <li><a href="#"><img src="/Content/assets/client/img/icon/heart.png" alt="yêu thích"><span>Yêu thích</span></a></li>
+                        <li><a href="#"><img src="/Content/assets/client/img/icon/compare.png" alt="so sánh"><span>So sánh</span></a></li>
+                        <li><a href="/chi-tiet/@item.Alias-p @item.Id"><img src="/Content/assets/client/img/icon/search.png" alt="xem chi tiết"><span>Xem chi tiết</span></a></li>
+                    </ul>
+                </div>
+                <div class="product__item__text">
+                    <h6>@item.Title</h6>
+                    <a href="#" class="add-cart btnAddToCart" data-id="@item.Id">+ Thêm giỏ hàng</a>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    @if (item.PriceSale > 0)
+                    {
+                        <h5>
+                            <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) đ</span>
+                            <span><del>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</del></span>
+                        </h5>
+                    }
+                    else
+                    {
+                        <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) đ</span>
+                    }
+                    <div class="product__color__select">
+                        <label for="pc-7">
+                            <input type="radio" id="pc-7">
+                        </label>
+                        <label class="active black" for="pc-8">
+                            <input type="radio" id="pc-8">
+                        </label>
+                        <label class="grey" for="pc-9">
+                            <input type="radio" id="pc-9">
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     }

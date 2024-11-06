@@ -16,7 +16,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebBanHangOnline</RootNamespace>
     <AssemblyName>WebBanHangOnline</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -48,9 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKFinder, Version=2.4.0.2631, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ckfinder\bin\Release\CKFinder.dll</HintPath>
+    <Reference Include="CKFinder">
+      <HintPath>..\..\..\Project\WebBanHangOnline\WebBanHangOnline\Content\ckfinder\bin\Release\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
@@ -62,6 +61,9 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -78,9 +80,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -216,13 +218,29 @@
     <Compile Include="Migrations\202405150911385_CreateDatabase.Designer.cs">
       <DependentUpon>202405150911385_CreateDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202405240759567_Updatedatabase2405.cs" />
-    <Compile Include="Migrations\202405240759567_Updatedatabase2405.Designer.cs">
-      <DependentUpon>202405240759567_Updatedatabase2405.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202407271251013_Update-Database-27.cs" />
     <Compile Include="Migrations\202407271251013_Update-Database-27.Designer.cs">
       <DependentUpon>202407271251013_Update-Database-27.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410300332526_CreatedDatabase30-10.cs" />
+    <Compile Include="Migrations\202410300332526_CreatedDatabase30-10.designer.cs">
+      <DependentUpon>202410300332526_CreatedDatabase30-10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202410300403250_CreatedDatabase30-10-1.cs" />
+    <Compile Include="Migrations\202410300403250_CreatedDatabase30-10-1.designer.cs">
+      <DependentUpon>202410300403250_CreatedDatabase30-10-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411020839068_CreatedDatabase02-11.cs" />
+    <Compile Include="Migrations\202411020839068_CreatedDatabase02-11.designer.cs">
+      <DependentUpon>202411020839068_CreatedDatabase02-11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411050133184_CreatedDatabase0511.cs" />
+    <Compile Include="Migrations\202411050133184_CreatedDatabase0511.designer.cs">
+      <DependentUpon>202411050133184_CreatedDatabase0511.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411050208194_CreatedDatabase05112024.cs" />
+    <Compile Include="Migrations\202411050208194_CreatedDatabase05112024.designer.cs">
+      <DependentUpon>202411050208194_CreatedDatabase05112024.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -231,6 +249,7 @@
     <Compile Include="Models\Common\ThongKeTruyCap.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\EF\Adv.cs" />
+    <Compile Include="Models\EF\Banners.cs" />
     <Compile Include="Models\EF\Category.cs" />
     <Compile Include="Models\EF\Contact.cs" />
     <Compile Include="Models\EF\News.cs" />
@@ -240,6 +259,7 @@
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
     <Compile Include="Models\EF\ProductImage.cs" />
+    <Compile Include="Models\EF\Slides.cs" />
     <Compile Include="Models\EF\SpecialOffer.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
     <Compile Include="Models\EF\SystemSetting.cs" />
@@ -10022,6 +10042,8 @@
     <Content Include="Scripts\jsShopping.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Uploads\images\244994762_2380031152133544_4984166604951804110_n.jpg" />
+    <Content Include="Uploads\images\hero\hero-1.jpg" />
+    <Content Include="Uploads\images\hero\hero-2.jpg" />
     <Content Include="Uploads\_thumbs\Images\244994762_2380031152133544_4984166604951804110_n.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -10058,7 +10080,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Menu\_MenuTop.cshtml" />
     <Content Include="Views\Menu\_MenuProductCategory.cshtml" />
-    <Content Include="Views\Menu\_MenuHots.cshtml" />
     <Content Include="Views\Products\Partial_ProductHots.cshtml" />
     <Content Include="Views\Products\Partial_ProductSales.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
@@ -10077,12 +10098,14 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Detail.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
-    <Content Include="Views\Menu\_MenuSales.cshtml" />
     <Content Include="Views\Menu\_MenuArrivals.cshtml" />
     <Content Include="Views\Products\Partial_ItemByCateId.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Menu\_MenuSpecialOffer.cshtml" />
+    <Content Include="Views\Menu\_MenuSlides.cshtml" />
+    <Content Include="Views\Menu\_MenuBanners.cshtml" />
+    <Content Include="Views\Products\Partial_ProductFeature.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -10107,12 +10130,27 @@
     <EmbeddedResource Include="Migrations\202405150911385_CreateDatabase.resx">
       <DependentUpon>202405150911385_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405240759567_Updatedatabase2405.resx">
-      <DependentUpon>202405240759567_Updatedatabase2405.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202407271251013_Update-Database-27.resx">
       <DependentUpon>202407271251013_Update-Database-27.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410300332526_CreatedDatabase30-10.resx">
+      <DependentUpon>202410300332526_CreatedDatabase30-10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410300403250_CreatedDatabase30-10-1.resx">
+      <DependentUpon>202410300403250_CreatedDatabase30-10-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411020839068_CreatedDatabase02-11.resx">
+      <DependentUpon>202411020839068_CreatedDatabase02-11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411050133184_CreatedDatabase0511.resx">
+      <DependentUpon>202411050133184_CreatedDatabase0511.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411050208194_CreatedDatabase05112024.resx">
+      <DependentUpon>202411050208194_CreatedDatabase05112024.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

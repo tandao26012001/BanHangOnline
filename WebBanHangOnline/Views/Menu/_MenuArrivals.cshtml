@@ -2,16 +2,20 @@
 
 @if (Model != null && Model.Any())
 {
-    <div class="row">
-        <div class="col-md-12">
-            <div class="product-filters">
-                <ul>
-                    <li class="active" data-filter="*">All</li>
-                    @foreach (var item in Model)
-                    {
-                        <li data-filter=".@item.Alias">@item.Title</li>
-                    }
-                </ul>
+    <div class="card">
+        <div class="card-heading">
+            <a data-toggle="collapse" data-target="#collapseOne">Danh mục sản phẩm</a>
+        </div>
+        <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="shop__sidebar__categories">
+                    <ul class="nice-scroll">
+                        @foreach (var item in Model)
+                        {
+                            <li><a href="/danh-muc-san-pham/@item.Alias-@item.Id">@item.Title</a></li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

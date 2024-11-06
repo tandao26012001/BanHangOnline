@@ -4,31 +4,14 @@
 }
 @if (Model != null && Model.Any())
 {
-    <div class="testimonail-section mt-150 mb-150">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1 text-center">
-                    <div class="testimonial-sliders">
-                        @foreach (var item in Model)
-                        {
-                            <div class="single-testimonial-slider">
-                                <div class="client-avater">
-                                    <img src="@item.Icon" alt="@item.Title">
-                                </div>
-                                <div class="client-meta">
-                                    <a href="/danh-muc-san-pham/@item.Alias-@item.Id"><h3>@item.Title</h3></a>
-                                    <p class="testimonial-body">
-                                        @item.Description
-                                    </p>
-                                    @*<div class="last-icon">
-                                        <i class="fas fa-quote-right"></i>
-                                    </div>*@
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="filter__controls">
+                @foreach (var item in Model)
+                {
+                    <li data-filter=".@item.Alias">@item.Title</li>
+                }
+            </ul>
         </div>
     </div>
 }

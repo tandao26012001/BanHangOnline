@@ -43,6 +43,8 @@ namespace WebBanHangOnline.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
+        public DbSet<Slides> Slides { get; set; }
+        public DbSet<Banners> Banners { get; set; }
 
         public static WebBanHangOnlineDbContext Create()
         {

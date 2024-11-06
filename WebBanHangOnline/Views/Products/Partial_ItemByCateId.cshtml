@@ -10,26 +10,50 @@
         {
             strImge = img.Image;
         }
-        <div class="col-lg-4 col-md-6 text-center @item.ProductCategory.Alias">
-            <div class="single-product-item">
-                <div class="product-image">
-                    <a href="/chi-tiet/@item.Alias-p @item.Id"><img src="@strImge" alt="@item.Title"></a>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="product__item">
+                <div class="product__item__pic set-bg" data-setbg="@strImge">
+                    <ul class="product__hover">
+                        <li><a href="#"><img src="/Content/assets/client/img/icon/heart.png"><span>Yêu thích</span></a></li>
+                        <li>
+                            <a href="#"><img src="/Content/assets/client/img/icon/compare.png"><span>So sánh</span></a>
+                        </li>
+                        <li><a href="/chi-tiet/@item.Alias-p @item.Id"><img src="/Content/assets/client/img/icon/search.png"><span>Xem chi tiết</span></a></li>
+                    </ul>
                 </div>
-                <a href="/chi-tiet/@item.Alias-p @item.Id"><h3>@item.Title</h3></a>
-                @if (item.PriceSale > 0)
-                {
-                    <p class="product-price">
-                        <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) đ</span>
-                        <span><del>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</del></span>
-                    </p>
-                }
-                else
-                {
-                    <p class="product-price" style="color:red;">
-                        <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</span>
-                    </p>
-                }
-                <a href="#" class="cart-btn btnAddToCart" data-id="@item.Id"><i class="fas fa-shopping-cart"></i>Thêm giỏ hàng</a>
+                <div class="product__item__text">
+                    <h6>@item.Title</h6>
+                    <a href="#" class="add-cart btnAddToCart" data-id="@item.Id">+ Thêm vào giỏ</a>
+                    <div class="rating">
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    @if (item.PriceSale > 0)
+                    {
+                        <h5>
+                            <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) đ</span>
+                            <span><del>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</del></span>
+                        </h5>
+                    }
+                    else
+                    {
+                        <h5><span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</span></h5>
+                    }
+                    <div class="product__color__select">
+                        <label for="pc-4">
+                            <input type="radio" id="pc-4">
+                        </label>
+                        <label class="active black" for="pc-5">
+                            <input type="radio" id="pc-5">
+                        </label>
+                        <label class="grey" for="pc-6">
+                            <input type="radio" id="pc-6">
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     }
