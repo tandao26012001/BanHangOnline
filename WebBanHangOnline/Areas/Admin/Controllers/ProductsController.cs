@@ -54,7 +54,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                             model.ProductImage.Add(new ProductImage
                             {
                                 ProductId = model.Id,
-                                Image = Images[i],
+                                ImageUrl = Images[i],
                                 IsDefault = true
                             });
                         }
@@ -63,7 +63,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                             model.ProductImage.Add(new ProductImage
                             {
                                 ProductId = model.Id,
-                                Image = Images[i],
+                                ImageUrl = Images[i],
                                 IsDefault = false
                             });
                         }

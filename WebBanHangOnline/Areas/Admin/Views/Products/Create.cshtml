@@ -50,13 +50,13 @@
                                                     <div class="form-group row">
                                                         <label class="col-form-label col-md-2 col-sm-3 ">Title</label>
                                                         <div class="col-md-10 col-sm-9 ">
-                                                            <input type="text" class="form-control" name="Title" >
+                                                            <input type="text" class="form-control" name="Title">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-form-label col-md-2 col-sm-3 ">ProductCode</label>
                                                         <div class="col-md-9 col-sm-9 ">
-                                                            <input type="text" class="form-control" placeholder="ProductCode" name="ProductCode" >
+                                                            <input type="text" class="form-control" placeholder="ProductCode" name="ProductCode">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -68,7 +68,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-form-label col-md-2 col-sm-3 ">Description</label>
                                                         <div class="col-md-9 col-sm-9 ">
-                                                            <input type="text" class="form-control" placeholder="Description" name="Description" >
+                                                            <input type="text" class="form-control" placeholder="Description" name="Description">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -87,7 +87,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-form-label col-md-2 col-sm-3 ">Price</label>
                                                         <div class="col-md-9 col-sm-9 ">
-                                                            <input type="text" class="form-control auto" id="demoPrice" name="demoPrice" value="0" data-a-dec="," data-a-sep="." >
+                                                            <input type="text" class="form-control auto" id="demoPrice" name="demoPrice" value="0" data-a-dec="," data-a-sep=".">
                                                             @Html.HiddenFor(x => x.Price, new { @class = "", @placeholder = "Price" })
                                                         </div>
                                                     </div>
@@ -97,6 +97,11 @@
                                                             <input type="text" class="form-control auto" id="demoPriceSale" name="demoPriceSale" value="0">
                                                             @Html.HiddenFor(x => x.PriceSale, new { @class = "form-control", @placeholder = "PriceSale" })
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-form-label col-md-2 col-sm-3 ">Màu sắc</label>
+                                                            @*<input type="text" class="form-control auto" id="Color" name="Color">*@
+                                                            @Html.TextBoxFor(x => x.Color, new { @class = "c-1", type = "color" })
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-form-label col-md-2 col-sm-3 ">OriginalPrice</label>

@@ -54,16 +54,17 @@
                                             <input type="checkbox" id="check-all" class="flat">
                                         </th>
                                         <th class="column-title">#</th>
-                                        <th class="column-title">Image </th>
-                                        <th class="column-title">Title </th>
-                                        <th class="column-title" style="text-align:center">ProductCategory </th>
-                                        <th class="column-title" style="text-align:center">Quantity </th>
-                                        <th class="column-title" style="text-align:center">Price </th>
-                                        <th class="column-title" style="text-align:center">CreatedDate </th>
-                                        <th class="column-title" style="text-align:center">Home </th>
+                                        <th class="column-title">Hình ảnh </th>
+                                        <th class="column-title">Tên sản phẩm </th>
+                                        <th class="column-title" style="text-align:center">Danh mục sản phẩm </th>
+                                        <th class="column-title" style="text-align:center">Số lượng </th>
+                                        <th class="column-title" style="text-align:center">Giá </th>
+                                        <th class="column-title">Màu sắc </th>
+                                        <th class="column-title" style="text-align:center">Ngày tạo </th>
+                                        <th class="column-title" style="text-align:center">Trang chủ </th>
                                         <th class="column-title" style="text-align:center">Sale </th>
                                         <th class="column-title" style="text-align:center">Hot </th>
-                                        <th class="column-title" >Tools </th>
+                                        <th class="column-title">Tools </th>
                                         <th class="bulk-actions" colspan="11">
                                             <a class="antoo" style="color:#fff; font-weight:500;">Select ( <span class="action-cnt"> </span> )</a>
                                         </th>
@@ -83,33 +84,37 @@
                                             var CheckImage = item.ProductImage.FirstOrDefault(x => x.IsDefault);
                                             if (CheckImage != null)
                                             {
-                                                strImg = CheckImage.Image;
+                                                strImg = CheckImage.ImageUrl;
                                             }
-                                            <tr class="odd pointer" id="trow_@item.Id">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records" value="@item.Id">
-                                                </td>
-                                                <td class=" ">@i</td>
-                                                <td class=" "><img class="imgproduct" data-id="@item.Id" src="@strImg" width="90" /></td>
-                                                <td class=" ">@item.Title</td>
-                                                <td class="text-center">@item.ProductCategory.Title</td>
-                                                <td class="text-center">@item.Quantity</td>
-                                                <td class="text-center">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</td>
-                                                <td class="text-center">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                                <td class="text-center">
-                                                    <a href='#' data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a href='#' data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a href='#' data-id="@item.Id" class="btnHot">@Html.Raw(strCheckHot)</a>
-                                                </td>
-                                                <td class=" last">
-                                                    <a href="/admin/Products/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
-                                                    <a href="#" data-id="@item.Id" class="btnDelete"><i class="fa fa-trash-o"></i>Delete </a>
-                                                </td>
-                                            </tr>
+                                    <tr class="odd pointer" id="trow_@item.Id">
+                                        <td class="a-center ">
+                                            <input type="checkbox" class="flat" name="table_records" value="@item.Id">
+                                        </td>
+                                        <td class=" ">@i</td>
+                                        <td class=" "><img class="imgproduct" data-id="@item.Id" src="@strImg" width="90" /></td>
+                                        <td class=" ">@item.Title</td>
+                                        <td class="text-center">@item.ProductCategory.Title</td>
+                                        <td class="text-center">@item.Quantity</td>
+                                        <td class="text-center">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</td>
+                                        <td>
+                                            <span style="display: inline-block; width: 20px; height: 20px; background-color: @item.Color; border: 1px solid #000;"></span>
+                                            @item.Color
+                                        </td>
+                                        <td class="text-center">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                        <td class="text-center">
+                                            <a href='#' data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href='#' data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href='#' data-id="@item.Id" class="btnHot">@Html.Raw(strCheckHot)</a>
+                                        </td>
+                                        <td class=" last">
+                                            <a href="/admin/Products/edit/@item.Id"><i class="fa fa-edit"></i>Edit </a> ||
+                                            <a href="#" data-id="@item.Id" class="btnDelete"><i class="fa fa-trash-o"></i>Delete </a>
+                                        </td>
+                                    </tr>
                                             i++;
                                         }
                                     }

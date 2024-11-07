@@ -242,6 +242,18 @@
     <Compile Include="Migrations\202411050208194_CreatedDatabase05112024.designer.cs">
       <DependentUpon>202411050208194_CreatedDatabase05112024.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411070758122_AddColorToProduct.cs" />
+    <Compile Include="Migrations\202411070758122_AddColorToProduct.designer.cs">
+      <DependentUpon>202411070758122_AddColorToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411070837487_AddShortDescriptionToProduct.cs" />
+    <Compile Include="Migrations\202411070837487_AddShortDescriptionToProduct.designer.cs">
+      <DependentUpon>202411070837487_AddShortDescriptionToProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411070904326_UpdateProductImage.cs" />
+    <Compile Include="Migrations\202411070904326_UpdateProductImage.designer.cs">
+      <DependentUpon>202411070904326_UpdateProductImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -10146,6 +10158,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202411050208194_CreatedDatabase05112024.resx">
       <DependentUpon>202411050208194_CreatedDatabase05112024.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411070758122_AddColorToProduct.resx">
+      <DependentUpon>202411070758122_AddColorToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411070837487_AddShortDescriptionToProduct.resx">
+      <DependentUpon>202411070837487_AddShortDescriptionToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411070904326_UpdateProductImage.resx">
+      <DependentUpon>202411070904326_UpdateProductImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

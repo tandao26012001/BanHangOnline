@@ -29,12 +29,14 @@ namespace WebBanHangOnline.Models.EF
         [StringLength(50)]
         public string ProductCode { get; set; }
         public string Description { get; set; }
+        public string ShortDescription { get; set; }
 
         [AllowHtml]
         public string Detail { get; set; }
 
         [StringLength(250)]
         public string Image { get; set; }
+        public string Color { get; set; }
         public decimal OriginalPrice { get; set; }
         public decimal Price { get; set; }
         public decimal? PriceSale { get; set; }
