@@ -1,4 +1,4 @@
-﻿@model PagedList.PagedList<WebBanHangOnline.Models.EF.Product>
+﻿@model PagedList.IPagedList<WebBanHangOnline.Models.EF.Product>
 @using PagedList.Mvc;
 @using PagedList;
 
@@ -15,7 +15,7 @@
                     <h4>@ViewBag.Title</h4>
                     <div class="breadcrumb__links">
                         <a href="/">Trang chủ</a>
-                        <span>@ViewBag.Title</span>
+                        <a href="/san-pham">@ViewBag.Title</a>
                     </div>
                 </div>
             </div>
@@ -112,27 +112,94 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__left">
-                                <p>Showing 1–12 of 126 results</p>
+                                <p>Hiển thị @ViewBag.CurrentCount sản phẩm trong tổng số @ViewBag.TotalProducts sản phẩm tìm thấy.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__right">
-                                <p>Sắp xếp theo giá từ:</p>
-                                <select>
-                                    <option value="">Thấp đến cao</option>
-                                    <option value="">Cao đến thấp</option>
-                                </select>
+                                <p>
+                                    Sắp xếp theo giá:
+                                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.CurrentSort == "price_desc" ? "" : "price_desc", Searchtext = Request.QueryString["Searchtext"] })">
+                                        @if (ViewBag.CurrentSort == "price_desc")
+                                        {
+                                            <span>Giá từ thấp đến cao</span> }
+                                        else
+                                        {
+                                            <span>Giá từ cao đến thấp</span>}
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    @Html.Action("Partial_ItemByCateId", "Products")
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            var strImge = "";
+                            var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+                            if (img != null)
+                            {
+                                strImge = img.Image;
+                            }
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="@strImge">
+                                        <ul class="product__hover">
+                                            <li><a href="#"><img src="/Content/assets/client/img/icon/heart.png"><span>Yêu thích</span></a></li>
+                                            <li>
+                                                <a href="#"><img src="/Content/assets/client/img/icon/compare.png"><span>So sánh</span></a>
+                                            </li>
+                                            <li><a href="/chi-tiet/@item.Alias-p @item.Id"><img src="/Content/assets/client/img/icon/search.png"><span>Xem chi tiết</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6>@item.Title</h6>
+                                        <a href="#" class="add-cart btnAddToCart" data-id="@item.Id">+ Thêm vào giỏ</a>
+                                        <div class="rating">
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                        @if (item.PriceSale > 0)
+                                        {
+                                            <h5>
+                                                <span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0) đ</span>
+                                                <span><del>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</del></span>
+                                            </h5>
+                                        }
+                                        else
+                                        {
+                                            <h5><span style="color:red;">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0) đ</span></h5>
+                                        }
+                                        <div class="product__color__select">
+                                            <label for="pc-4">
+                                                <input type="radio" id="pc-4">
+                                            </label>
+                                            <label class="active black" for="pc-5">
+                                                <input type="radio" id="pc-5">
+                                            </label>
+                                            <label class="grey" for="pc-6">
+                                                <input type="radio" id="pc-6">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    { <!-- Hiển thị thông báo nếu không có sản phẩm -->
+                        <h4>Không có sản phẩm nào trùng với tìm kiếm.</h4>
+                    }
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="product__pagination">
-                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, Searchtext = Request.QueryString["Searchtext"] }))
                         </div>
                     </div>
                 </div>

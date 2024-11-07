@@ -12,22 +12,42 @@ namespace WebBanHangOnline.Controllers
     {
         private WebBanHangOnlineDbContext db = new WebBanHangOnlineDbContext();
         // GET: Products
-        public ActionResult Index(string Searchtext, int? page)
+        public ActionResult Index(string Searchtext, int? page, string sortOrder)
         {
             var pageSize = 12;
-            if (page == null)
+            int pageNumber = (page ?? 1);
+            //if (page == null)
+            //{
+            //    page = 1;
+            //}
+            //IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id);
+            //if (!string.IsNullOrEmpty(Searchtext))
+            //{
+            //items = items.Where(x => x.Alias.Contains(Searchtext) || x.Title.Contains(Searchtext));
+            var _query = db.Products
+                                .Where(p => string.IsNullOrEmpty(Searchtext) || p.Title.Contains(Searchtext))
+                                .OrderBy(p => p.Id);
+            //}
+            // Xử lý sắp xếp
+            switch (sortOrder)
             {
-                page = 1;
+                case "price_desc":
+                    _query = _query.OrderByDescending(p => p.PriceSale);
+                    break;
+                default:
+                    _query = _query.OrderBy(p => p.PriceSale);
+                    break;
             }
-            IEnumerable<Product> items = db.Products.OrderByDescending(x => x.Id);
-            if (!string.IsNullOrEmpty(Searchtext))
-            {
-                items = items.Where(x => x.Alias.Contains(Searchtext) || x.Title.Contains(Searchtext));
-            }
-            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
-            items = items.ToPagedList(pageIndex, pageSize);
-            ViewBag.PageSize = pageSize;
-            ViewBag.Page = page;
+            // Tổng số sản phẩm tìm thấy (không phân trang)
+            int totalProducts = _query.Count();
+            //var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            // Phân trang sản phẩm
+            var items = _query.ToPagedList(pageNumber, pageSize);
+            //ViewBag.PageSize = pageSize;
+            //ViewBag.Page = page;
+            ViewBag.TotalProducts = totalProducts; // Tổng số sản phẩm tìm thấy
+            ViewBag.CurrentCount = items.Count; // Số sản phẩm trên trang hiện tại
+            ViewBag.CurrentSort = sortOrder; // Giữ lại thứ tự sắp xếp hiện tại
             return View(items);
         }
 
@@ -74,11 +94,6 @@ namespace WebBanHangOnline.Controllers
         public ActionResult Partial_ProductSales()
         {
             var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(8).ToList();
-            return PartialView(items);
-        }
-        public ActionResult Partial_ItemByCateId()
-        {
-            var items = db.Products.Where(x => x.IsHome).ToList();
             return PartialView(items);
         }
     }

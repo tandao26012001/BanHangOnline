@@ -10099,7 +10099,6 @@
     <Content Include="Views\News\Detail.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Menu\_MenuArrivals.cshtml" />
-    <Content Include="Views\Products\Partial_ItemByCateId.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Menu\_MenuSpecialOffer.cshtml" />
