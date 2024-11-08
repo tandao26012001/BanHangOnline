@@ -169,9 +169,9 @@ namespace WebBanHangOnline.Controllers
                     Alias = checkProduct.Alias,
                     Quantity = quantity
                 };
-                if (checkProduct.ProductImage.FirstOrDefault(x => x.IsDefault) != null)
+                if (checkProduct.ProductImages.FirstOrDefault(x => x.IsDefault) != null)
                 {
-                    item.ProductImg = checkProduct.ProductImage.FirstOrDefault(x => x.IsDefault).ImageUrl;
+                    item.ProductImg = checkProduct.ProductImages.FirstOrDefault(x => x.IsDefault).ImageUrl;
                 }
                 item.Price = checkProduct.Price;
                 if (checkProduct.PriceSale > 0)

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web.Mvc;
 using WebBanHangOnline.Models;
 using WebBanHangOnline.Models.EF;
+using System.Data.Entity;
+
 
 namespace WebBanHangOnline.Controllers
 {
@@ -51,18 +53,23 @@ namespace WebBanHangOnline.Controllers
             return View(items);
         }
 
-        public ActionResult Detail(string alias, int id)
+        public ActionResult Detail(/*string alias*/ int id)
         {
-            var item = db.Products.Find(id);
-            if (item != null)
+            var product = db.Products.Find(id);
+            //var product = db.Products
+            //    .Include(p=>p.Image)
+            //    .FirstOrDefault(p => p.Id == id);
+            product = db.Products.Include(p => p.ProductImages)
+                                 .FirstOrDefault(p => p.Id == id);
+            if (product != null)
             {
-                db.Products.Attach(item);
-                item.ViewCount = item.ViewCount + 1;
-                db.Entry(item).Property(x => x.ViewCount).IsModified = true;
+                db.Products.Attach(product);
+                product.ViewCount = product.ViewCount + 1;
+                db.Entry(product).Property(x => x.ViewCount).IsModified = true;
                 db.SaveChanges();
             }
-            ViewBag.RelatedProducts = db.Products.Where(x => x.Id != id && x.ProductCategoryId == item.ProductCategoryId).ToList();
-            return View(item);
+            ViewBag.RelatedProducts = db.Products.Where(x => x.Id != id && x.ProductCategoryId == product.ProductCategoryId).ToList();
+            return View(product);
         }
         public ActionResult ProductCategory(string alias, int id)
         {

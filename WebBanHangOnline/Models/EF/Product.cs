@@ -13,7 +13,7 @@ namespace WebBanHangOnline.Models.EF
     {
         public Product()
         {
-            this.ProductImage = new HashSet<ProductImage>();
+            this.ProductImages = new HashSet<ProductImage>();
             this.OrderDetails = new HashSet<OrderDetail>();
         }
         [Key]
@@ -57,7 +57,7 @@ namespace WebBanHangOnline.Models.EF
         public string SeoKeywords { get; set; }
 
         public virtual ProductCategory ProductCategory { get; set; }
-        public virtual ICollection<ProductImage> ProductImage { get; set; }
+        public virtual ICollection<ProductImage> ProductImages { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

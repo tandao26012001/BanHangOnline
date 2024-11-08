@@ -138,7 +138,7 @@
                         foreach (var item in Model)
                         {
                             var strImge = "";
-                            var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+                            var img = item.ProductImages.FirstOrDefault(x => x.IsDefault);
                             if (img != null)
                             {
                                 strImge = img.ImageUrl;

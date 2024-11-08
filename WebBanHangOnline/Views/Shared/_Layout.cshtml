@@ -88,7 +88,7 @@
                 </div>
             </div>
         </div>
-        @Html.Action("MenuTop", "Menu")        
+        @Html.Action("MenuTop", "Menu")
     </header>
     <!-- Header Section End -->
     @RenderBody()
@@ -180,6 +180,8 @@
     <script src="~/Content/assets/client/js/mixitup.min.js"></script>
     <script src="~/Content/assets/client/js/owl.carousel.min.js"></script>
     <script src="~/Content/assets/client/js/main.js"></script>
+    @RenderSection("scripts", required: false)
+
 </body>
 
 </html>

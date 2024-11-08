@@ -51,7 +51,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                         if (i + 1 == rDefault[0])
                         {
                             model.Image = Images[i];
-                            model.ProductImage.Add(new ProductImage
+                            model.ProductImages.Add(new ProductImage
                             {
                                 ProductId = model.Id,
                                 ImageUrl = Images[i],
@@ -60,7 +60,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                         }
                         else
                         {
-                            model.ProductImage.Add(new ProductImage
+                            model.ProductImages.Add(new ProductImage
                             {
                                 ProductId = model.Id,
                                 ImageUrl = Images[i],
@@ -117,7 +117,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             var item = db.Products.Find(id);
             if (item != null)
             {
-                var checkImg = item.ProductImage.Where(x => x.ProductId == item.Id);
+                var checkImg = item.ProductImages.Where(x => x.ProductId == item.Id);
                 if (checkImg != null)
                 {
                     foreach(var img in checkImg)
