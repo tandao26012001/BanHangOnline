@@ -6,42 +6,30 @@
     var tongtien = decimal.Zero;
     var thanhtien = decimal.Zero;
     var tienship = 50000;
-
-    <div class="order-details-wrap">
-        <table class="order-details">
-            <thead>
-                <tr>
-                    <th>Tên sản phẩm</th>
-                    <th>Giá</th>
-                    <th>Số lượng</th>
-                </tr>
-            </thead>
-            <tbody class="order-details-body">
-                @foreach (var item in Model)
-                {
-                    tongtien += item.TotalPrice;
-                    thanhtien = tongtien + tienship;
-                    <tr>
-                        <td>@item.ProductName</td>
-                        <td>@Common.FormatNumber(item.Price, 0)</td>
-                        <td>@item.Quantity</td>
-                    </tr>
-                }
-            </tbody>
-            <tbody class="checkout-details">
-                <tr>
-                    <td>Tổng tiền sản phẩm</td>
-                    <td>@Common.FormatNumber(tongtien, 0)</td>
-                </tr>
-                <tr>
-                    <td>Tiền ship</td>
-                    <td>@Common.FormatNumber(tienship, 0)</td>
-                </tr>
-                <tr>
-                    <td>Thành tiền</td>
-                    <td>@Common.FormatNumber(thanhtien, 0)</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-lg-5 col-md-6">
+        <div class="checkout__order">
+            <h4 class="order__title">Chi tiết đơn hàng</h4>
+            <div class="checkout__order__products">Sản phẩm <span>Đơn giá</span></div>
+            @foreach (var item in Model)
+            {
+                tongtien += item.TotalPrice;
+                thanhtien = tongtien + tienship;
+                <ul class="checkout__total__products">
+                    <li>@item.ProductName<span>@Common.FormatNumber(item.Price, 0)</span></li>
+                </ul>
+            }
+            <ul class="checkout__total__all">
+                <li>Tổng tiền giỏ hàng <span>@Common.FormatNumber(tongtien, 0)</span></li>
+                <li>Tiền ship hàng <span>@Common.FormatNumber(tienship, 0)</span></li>
+                <li>Thành tiền<span>@Common.FormatNumber(thanhtien, 0)</span></li>
+            </ul>
+            <button type="submit" class="site-btn">Thanh toán</button>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-lg-8 offset-lg-2 text-center">
+        <p>Không có sản phẩm nào trong giỏ hàng, bấm <a href="/san-pham">vào đây</a> để mua hàng</p>
     </div>
 }

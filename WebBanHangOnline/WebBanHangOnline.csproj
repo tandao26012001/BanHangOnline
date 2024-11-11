@@ -254,6 +254,10 @@
     <Compile Include="Migrations\202411070904326_UpdateProductImage.designer.cs">
       <DependentUpon>202411070904326_UpdateProductImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411110711380_UpdateProductAddSize.cs" />
+    <Compile Include="Migrations\202411110711380_UpdateProductAddSize.designer.cs">
+      <DependentUpon>202411110711380_UpdateProductAddSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -10101,7 +10105,6 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Partial_Item_Cart.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
-    <Content Include="Views\ShoppingCart\Partial_Item_ThanhToan.cshtml" />
     <Content Include="Views\ShoppingCart\Partial_CheckOut.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOutSuccess.cshtml" />
     <Content Include="Views\Home\Refresh.cshtml" />
@@ -10117,6 +10120,7 @@
     <Content Include="Views\Menu\_MenuSlides.cshtml" />
     <Content Include="Views\Menu\_MenuBanners.cshtml" />
     <Content Include="Views\Products\Partial_ProductFeature.cshtml" />
+    <Content Include="Views\ShoppingCart\Partial_Item_ThanhToan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -10167,6 +10171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202411070904326_UpdateProductImage.resx">
       <DependentUpon>202411070904326_UpdateProductImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411110711380_UpdateProductAddSize.resx">
+      <DependentUpon>202411110711380_UpdateProductAddSize.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
