@@ -26,7 +26,8 @@
         e.preventDefault();
         var id = $(this).data("id");
         var quantity = $('#Quantity_' + id).val();
-        Update(id, quantity);
+            Update(id, quantity);
+        }
 
     });
     $('body').on('click', '.btnDeleteAll', function (e) {

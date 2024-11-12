@@ -3,9 +3,14 @@
 
 @if (Model != null && Model.Any())
 {
+    if (TempData["UpdateMessage"] != null)
+    {
+        <div id="updateMessage" class="alert alert-success">
+            @TempData["UpdateMessage"]
+        </div>
+    }
     var tongtien = decimal.Zero;
-    var thanhtien = decimal.Zero;
-    var tienship = 50000;
+
     <div class="row">
         <div class="col-lg-8">
             <div class="shopping__cart__table">
@@ -21,7 +26,6 @@
                     @foreach (var item in Model)
                     {
                         tongtien += item.TotalPrice;
-                        thanhtien = tongtien + tienship;
                         <tbody id="trow_@item.ProductId">
                             <tr>
                                 <td class="product__cart__item">
@@ -41,7 +45,8 @@
                                     </div>
                                 </td>
                                 <td class="cart__price">@Common.FormatNumber(item.Price, 0)</td>
-                                <td class="cart__close"><i class="fa fa-close"></i></td>
+                                <td class="cart__close btnDelete" data-id="@item.ProductId"><i class="fa fa-close"></i></td>
+                                <td class="cart__close btnUpdate" data-id="@item.ProductId"><i class="fa fa-refresh"></i></td>
                             </tr>
                         </tbody>
                     }
@@ -53,11 +58,6 @@
                         <a href="/san-pham">Tiếp tục mua hàng</a>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="continue__btn update__btn">
-                        <a href="#"><i class="fa fa-spinner"></i>Cập nhật giỏ hàng</a>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="col-lg-4">
@@ -65,8 +65,6 @@
                 <h6>Cart total</h6>
                 <ul>
                     <li>Tổng tiền giỏ hàng <span>@Common.FormatNumber(tongtien, 0)</span></li>
-                    <li>Tiền ship hàng <span>@Common.FormatNumber(tienship, 0)</span></li>
-                    <li>Thành tiền<span>@Common.FormatNumber(thanhtien, 0)</span></li>
                 </ul>
                 <a href="/thanh-toan" class="primary-btn">Thanh toán</a>
             </div>

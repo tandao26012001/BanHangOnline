@@ -195,7 +195,7 @@ namespace WebBanHangOnline.Controllers
                 cart.UpdateQuantity(id, quantity);
                 return Json(new { Success = true });
             }
-            return Json(new { Success = false });
+            return Json(cart);
         }
         [HttpPost]
         public ActionResult Delete(int id)
@@ -228,5 +228,6 @@ namespace WebBanHangOnline.Controllers
             }
             return Json(new { Success = false });
         }
+
     }
 }
