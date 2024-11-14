@@ -2695,14 +2695,6 @@ ol {
 
 	.checkout__total__products li:last-child {
 		margin-bottom: 0;
-		width: 500px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		line-height: 25px;
-		-webkit-line-clamp: 3;
-		height: 75px;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
 	}
 
 .checkout__total__products li span {
