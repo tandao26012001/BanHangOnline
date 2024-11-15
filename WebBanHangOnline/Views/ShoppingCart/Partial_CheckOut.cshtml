@@ -1,0 +1,45 @@
+﻿@model WebBanHangOnline.Models.OrderViewModel
+@using (Ajax.BeginForm("CheckOut", "ShoppingCart", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "load_data",
+    OnComplete = "OnSuccessCO",
+    OnFailure = "OnFailure"
+}, new { @Id = "myForm" }))
+{
+    <script>
+        function OnSuccessCO() {
+            location.href = "OnSuccessCO"
+        }
+        function OnFailure() {
+
+        }
+    </script>
+}
+@Html.AntiForgeryToken()
+
+<h6 class="coupon__code">
+    <span class="icon_tag_alt"></span>Thông tin nhận hàng
+</h6>
+<div class="checkout__input">
+    <p>Họ và tên khách hàng<span>*</span></p>
+    <input type="text" name="CustomerName" required class="form-control" autocomplete="off">
+</div>
+<div class="checkout__input">
+    <p>Địa chỉ nhận hàng<span>*</span></p>
+    <input type="text" placeholder="Apartment, suite, unite ect (optinal)" name="Address" class="form-control" autocomplete="off">
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="checkout__input">
+            <p>Số điện thoại<span>*</span></p>
+            <input type="text" name="Phone" class="form-control" autocomplete="off">
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="checkout__input">
+            <p>Email<span>*</span></p>
+            <input type="text" name="Email" class="form-control" autocomplete="off">
+        </div>
+    </div>
+</div>

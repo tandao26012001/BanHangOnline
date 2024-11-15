@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
+@using WebBanHangOnline.Common
+@if (Model != null && Model.Any())
+{
+    var tongtien = decimal.Zero;
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="shopping__cart__table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            tongtien += item.TotalPrice;
+                            <tr id="trow_@item.ProductId">
+                                <td class="product__cart__item" style="width: 600px">
+                                    <div class="product__cart__item__pic">
+                                        <img src="@item.ProductImg" alt="@item.ProductName" width="120">
+                                    </div>
+                                    <div class="product__cart__item__text">
+                                        <h6>@item.ProductName</h6>
+                                        <h5>@Common.FormatNumber(item.Price, 0)</h5>
+                                    </div>
+                                </td>
+                                @*<td class="quantity__item">
+                                <div class="quantity">
+                                    <div class="pro-qty-2">
+                                        <input type="text" class="quantity" id="Quantity_@item.Quantity" min="1" value="@item.Quantity" />
+                                    </div>
+                                </div>
+                            </td>*@
+                                <td class="quantity__item">
+                                    <div class="quantity">
+                                        <div class="pro-qty-2">
+                                            <input type="number" class="pro-qty-2" id="Quantity_@item.ProductId" value="@item.Quantity" min="0" />
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="cart__close"><i class="fa fa-trash btnDelete" data-id="@item.ProductId"></i></td>
+                                <td class="cart__close"><i class="fa fa-refresh btnUpdate" data-id="@item.ProductId"></i></td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @if (ViewBag.CheckCart == null)
+            {
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="continue__btn">
+                        <a href="/san-pham">Tiếp tục mua hàng</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="continue__btn update__btn">
+                        <a href="#" class="btnDeleteAll"><i class="fa fa-trash-restore"></i> Xoá tất cả</a>
+                    </div>
+                </div>
+            }
+            </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="cart__discount">
+
+        </div>
+        <div class="cart__total">
+            <h6>Thông tin giỏ hàng</h6>
+            <ul>
+                <li>Thành tiền <span id="total-price">@Common.FormatNumber(tongtien, 0)</span></li>
+            </ul>
+            <a href="/thanh-toan" class="primary-btn">Thanh toán</a>
+        </div>
+    </div>
+}
+else
+{
+    <tr>
+        <td colspan="8">Không có sản phẩm nào trong giỏ hàng!</td>
+    </tr>
+}
+

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
+@using WebBanHangOnline.Common
+
+@if (Model != null && Model.Any())
+{
+    var thanhtien = decimal.Zero;
+    var ship = 50000;
+    var thanhtoandonhang = decimal.Zero;
+    <div class="checkout__order">
+        <h4 class="order__title">Giỏ hàng của bạn</h4>
+        <div class="checkout__order__products">Sản phẩm <span>Giá sản phẩm</span></div>
+        <ul class="checkout__total__products">
+            
+            @foreach (var item in Model)
+            {
+                thanhtien += item.TotalPrice;
+                thanhtoandonhang = thanhtien + ship;
+                <li>@item.ProductName <span>@Common.FormatNumber(item.Price, 0)</span></li>
+            }
+        </ul>
+        <ul class="checkout__total__all">
+            <li>Tổng giá giỏ hàng <span>@Common.FormatNumber(thanhtien, 0)</span></li>
+            <li>Giá vận chuyển <span>@Common.FormatNumber(ship, 0)</span></li>
+            <li>Thành tiền <span>@Common.FormatNumber(thanhtoandonhang, 0)</span></li>
+        </ul>
+        <button type="submit" class="site-btn">THANH TOÁN</button>
+    </div>
+}
